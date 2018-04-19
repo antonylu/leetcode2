@@ -23,22 +23,25 @@ class Solution(object):
         """
 
         # List Operation, add node one by one, add carry node when necessary
-        # Time  O(n), beats 62.73%, 144ms
+        # Time  O(n), beats 69.33%, 142ms
         # Space O(n)
         result = ListNode(0)
         curr = result
 
         carry = 0
         while (l1 != None or l2 != None):
-            n1 = 0 if l1 == None else l1.val
-            n2 = 0 if l2 == None else l2.val
+            n1 = n2 = 0
+            if l1!= None: 
+                n1=l1.val
+                l1=l1.next
+            if l2!= None: 
+                n2=l2.val
+                l2=l2.next
             s = n1 + n2 + carry
             carry = 0 if s < 10 else 1
             s = s % 10
             curr.next = ListNode(s)
             curr = curr.next
-            if l1!= None: l1=l1.next
-            if l2!= None: l2=l2.next
 
         if carry!=0:
             curr.next = ListNode(carry)
