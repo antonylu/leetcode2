@@ -19,7 +19,7 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        ## no1. brute force, enumeration, two nested loops
+        ## no1. brute force, Incremental, enumeration, two nested loops
         ## space O(1)
         ## time  O(n^2), beats 4%, 6637ms
         #  
