@@ -22,37 +22,20 @@
 # 
 class Solution:
     def reverse(self, x):
-        """
-        :type x: int
-        :rtype: int
-        """
-        r = 0
-        sign = 1
-
-        if(x <0): 
-            x = abs(x)
-            sign = -1
-        # Solution 1, brute force, while loop
-        # plus from right most digits
-        # time  O(n), beats 85.29% Python 3, 60 ms
-        # time  O(n), beats 33.3% Python, 60 ms
-#
-#        while(x!=0):
-#            a = divmod(x,10)
-#            r = r*10 + a[1]
-#            x = a[0]
-
-        # Solution 2
-        # python can reverse string quickly
-        # convert to string the reverse
-        # time O(1), beats 62.27%, Python 57ms
-        r = int(str(x)[::-1])
-
-        r=r*sign
-        if (r >= 2**31 or r <=-1*2**31): return 0
-
-        return r
-
+        # Solution 3, Optimization
+        # memorization with max/min
+        # 
+        # range: [−2**31,  2**31 − 1] = [2147483647, -2147483648]
+        # use Python default str/reverse/int conversion
+        # 
+        # time O(1), beats 54.53%, Python 59ms
+        if x < 0:
+            y  = - int(str(-x)[::-1])
+        else:
+            y  = int(str(x)[::-1])
+        if y > 2147483647 or y < -2147483648:
+            return 0
+        return y
         
 s = Solution()
 print(s.reverse(-123))
