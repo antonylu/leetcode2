@@ -26,6 +26,7 @@ class Solution(object):
         # brute force, iterative
         # os.path.commonprefix(['/usr/lib', '/usr/local/lib'])
         # O(n), beats 63.6% 42ms
+        """
         if not strs: return ''
 
         cp = strs[0]
@@ -33,7 +34,8 @@ class Solution(object):
             cp = os.path.commonprefix([cp, s])
 
         return cp
-
+        """
+        return os.path.commonprefix(strs)
 s = Solution()
 print(s.longestCommonPrefix(["flower","flow","floeright"]))
 print(s.longestCommonPrefix(["flower","flow","flight"]))
