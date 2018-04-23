@@ -47,24 +47,20 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        # Dict hashmap
+        # ust dict hashmap
         # Traverse from right most digit by revers string first
-        # * If I comes before V or X, subtract 1 eg: IV = 4 and IX = 9
-        # * If X comes before L or C, subtract 10 eg: XL = 40 and XC = 90
-        # * If C comes before D or M, subtract 100 eg: CD = 400 and CM = 900
+        # Time O(n), beats 70.44%, 176ms
+        
         dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C':100, 'D':500, 'M':1000}
         r = 0
-        prev_d = ''
+        prev_d = 'I'
         for d in s[::-1]:
-            if (prev_d == 'V' or prev_d == 'X') and d == 'I':
-                r -= 1
-            elif (prev_d == 'L' or prev_d == 'C') and d == 'X':
-                r -= 10
-            elif (prev_d == 'D' or prev_d == 'M') and d == 'C':
-                r -= 100
+        # Time O(n), beats 52.9%, 186ms
+            if (dict[d] < dict[prev_d]):
+                r -= dict[d]
             else:
                 r+= dict[d]
-                prev_d = d
+            prev_d = d
         return r
 
 s = Solution()
