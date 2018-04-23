@@ -53,14 +53,20 @@ class Solution(object):
         
         dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C':100, 'D':500, 'M':1000}
         r = 0
-        prev_d = 'I'
+        prev_d = ''
         for d in s[::-1]:
-        # Time O(n), beats 52.9%, 186ms
-            if (dict[d] < dict[prev_d]):
-                r -= dict[d]
+            # * If I comes before V or X, subtract 1 eg: IV = 4 and IX = 9
+            # * If X comes before L or C, subtract 10 eg: XL = 40 and XC = 90
+            # * If C comes before D or M, subtract 100 eg: CD = 400 and CM = 900
+            if (prev_d == 'V' or prev_d == 'X') and d == 'I':
+                r -= 1
+            elif (prev_d == 'L' or prev_d == 'C') and d == 'X':
+                r -= 10
+            elif (prev_d == 'D' or prev_d == 'M') and d == 'C':
+                r -= 100
             else:
                 r+= dict[d]
-            prev_d = d
+                prev_d = d
         return r
 
 s = Solution()
