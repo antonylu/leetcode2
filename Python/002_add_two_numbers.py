@@ -27,7 +27,6 @@ class Solution(object):
         # Space O(n)
         result = ListNode(0)
         curr = result
-
         carry = 0
         while (l1 != None or l2 != None):
             n1 = n2 = 0
@@ -38,7 +37,7 @@ class Solution(object):
                 n2=l2.val
                 l2=l2.next
             s = n1 + n2 + carry
-            carry = 0 if s < 10 else 1
+            carry = s/10
             s = s % 10
             curr.next = ListNode(s)
             curr = curr.next
