@@ -26,7 +26,9 @@ class Solution(object):
         :rtype: bool
         """
         # instinct: convert int to string, reverse, compare string
+        # Optimization: reject negative value directly
         # time O(n), beats 68.71%, 314ms
+        if x <0: return False
 
         s=str(x)
         return s == s[::-1] 
