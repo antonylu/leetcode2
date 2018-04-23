@@ -27,11 +27,9 @@ class Solution(object):
         """
         # instinct: convert int to string, reverse, compare string
         # Optimization: reject negative value directly
-        # time O(n), beats 68.71%, 314ms
-        if x <0: return False
-
-        s=str(x)
-        return s == s[::-1] 
+        # oneline code 
+        # time O(n), beats 50%, 339ms
+        return x == int(str(x)[::-1]) if x >= 0 else False;
 
 s = Solution()
 print(s.isPalindrome(123211))
