@@ -28,11 +28,19 @@ class Solution(object):
         :type y: int
         :rtype: int
         """
-        # xor, count no. of 1
+        # solution 1: xor, count no. of 1
         # O(n), beats 5.06% 56ms
-        z = x ^ y
-        h = 0
-        while z:
-            h +=1
-            z &= (z-1)
-        return h
+        #z = x ^ y
+        #h = 0
+        #while z:
+        #    h +=1
+        #    z &= (z-1)
+        #return h
+
+        # solution 2: use python default function
+        # beats 100%, 32ms
+        return bin(x^y).count('1')
+
+d = Solution()
+
+print(d.hammingDistance(2, 4))
