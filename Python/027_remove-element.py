@@ -52,7 +52,7 @@ class Solution(object):
 
         # brute force, enumerative
         # keep last index, append if not val
-        # 96%, 40ms
+        # 82%, 39ms
         l = len(nums)
         if l == 0: return 0
         if l == 1:
