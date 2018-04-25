@@ -22,35 +22,22 @@ class Solution(object):
         """
         # brute force, iterative, compare nodes in two list one by one
         # append to the new list
-        # O(n), 20.07%, 61ms 
+        # refactor, don't check end. If one of the list is ended, append the none-ended list to the new list
+        # O(n), 97%, 46ms 
 
         ml = ListNode(0)
         cur = ml
 
-        while (l1 or l2):
-            # a = ListNode()
-            if l2 == None:
-                # add l1 to ml
-                cur.next = l1
-                l1 = l1.next
-                cur = cur.next
-                continue
-
-            if l1 == None:
-                # add l2 to ml
-                cur.next = l2
-                l2 = l2.next
-                cur = cur.next
-                continue
-
+        while (l1 and l2):
             if l1.val > l2.val:
                 cur.next = l2
                 l2 = l2.next
-                cur = cur.next
             else:
                 cur.next = l1
                 l1 = l1.next
-                cur = cur.next
+            cur = cur.next
+
+        cur.next = l1 or l2
 
         return ml.next
 
