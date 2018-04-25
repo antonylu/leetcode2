@@ -55,11 +55,6 @@ class Solution(object):
         # 82%, 39ms
         l = len(nums)
         if l == 0: return 0
-        if l == 1:
-            if  nums[0] == val : 
-                return 0
-            else:
-                return 1
 
         last = 0
         for i in range(0,l):
