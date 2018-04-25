@@ -54,7 +54,6 @@ class Solution(object):
         # keep last index, append if not val
         # 82%, 39ms
         l = len(nums)
-        if l == 0: return 0
 
         last = 0
         for i in range(0,l):
