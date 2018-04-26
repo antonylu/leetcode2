@@ -29,23 +29,38 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        
-
         # search in a sorted array
         # Solution 1: brute force, enumerative, O(n)
         # 36%, 39ms
+        """
         for i in range(len(nums)):
             if target <= nums[i]: return i 
         return i+1
-        # Solution 2: binary search, O(log n)
-
+        """
+        # Solution 2: binary search, Divide and Conqure O(log n)
+        # 99%, 33ms
+        min = 0
+        max = len(nums) - 1
+        while (min <= max):
+            mid = (min+max)//2
+            if (nums[mid] == target):
+                return mid
+            if nums[mid] < target:
+                min = mid+1
+            else:
+                max = mid-1
+        return min
 
 d = Solution()
 
-haystack = 'hello'
-needle = 'll'
-print(d.strStr(haystack,needle))
+a1 = ([1,3,5,6], 5)
+a2 = ([1,3,5,6], 2)
+a3 = ([1,3,5,6], 7)
+a4 = ([1,3,5,6], 0)
+a5 = ([1,3], 2)
 
-haystack = "aaaaa"
-needle = "bba"
-print(d.strStr(haystack,needle))
+print(d.searchInsert(a1[0],a1[1]))
+print(d.searchInsert(a2[0],a2[1]))
+print(d.searchInsert(a3[0],a3[1]))
+print(d.searchInsert(a4[0],a4[1]))
+print(d.searchInsert(a5[0],a5[1]))
