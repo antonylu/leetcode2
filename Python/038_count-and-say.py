@@ -40,14 +40,20 @@ class Solution:
         # 8: 1113213211
         # 9: 31131211131221
         #10: 13211311123113112211
-        # time O(n^2), 98%, 40s
+        # time O(n^2), 98%, 40ms
+        
+        # memorization, lookup table for n <10
 
         list = [0, 1, 11, 21, 1211, 111221 , 312211, 13112221, 1113213211, 31131211131221, 13211311123113112211]
         if(n<=10): return str(list[n])
 
         r = list[10]
+
+        # refactor and improve efficiency
+        # skip int/str conversion
+        # input r, outpu r -> input s, output s
+        s=str(r)
         for i in range(10, n):
-            s=str(r)
             start  = 0
             next   = 1
             count  = 1
@@ -62,10 +68,9 @@ class Solution:
                     count = 1
                     start = next
                     next +=1
-            result = result + str(count) + s[start]
-            r=int(result)
+            s = result + str(count) + s[start]
 
-        return str(r)
+        return s
 
         
 
