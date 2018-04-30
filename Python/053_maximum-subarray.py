@@ -28,10 +28,11 @@ class Solution:
         # > Save the result in-place, so we just need to save the maximum of the item and its previous item
         # > return the maximum of the array
         # Time O(n), 87% 46ms
+        r = nums[0]
         for i in range(1, len(nums)):
             nums[i] = max(nums[i] + nums[i-1], nums[i])
-            print(nums[i])
-        return max(nums)
+            if r< nums[i]: r = nums[i] 
+        return r
         # Solution 3: accumulate sum, remember the max, re-accumate if sum < 0
         # O(n), 36% 54ms
         """
