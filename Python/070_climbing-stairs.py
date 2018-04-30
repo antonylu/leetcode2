@@ -24,6 +24,7 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 """
 class Solution(object):
+    dict = {}
     def climbStairs(self, n):
         """
         :type n: int
@@ -47,6 +48,7 @@ class Solution(object):
         # O(n), 
         # Python 2 96%
         # Python 3 100%
+        """
         if n < 4: return n
         s1 = 2
         s2 = 3
@@ -58,9 +60,17 @@ class Solution(object):
             i+=1
         return s
             
-        
+        """
         # Approach 3: Dynamic programming
         # memorization + devide and conqure + recursive
+        # use hash table to keep the value O(1)
+        # Time 96%
+        if n < 4: return n
+        if n in self.dict.keys(): return self.dict[n]
+        self.dict[n] = self.climbStairs(n-1)+self.climbStairs(n-2)
+        return self.dict[n]
+        
+        
 
 s = Solution()
 test_case = [2,3,38]
