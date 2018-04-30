@@ -27,22 +27,33 @@ class Solution(object):
         # Approach 1: enumerate each node, remove the same nodes in-place
         # current: to compare, if same, check next node, if different, concatenate nodes then check next
         # check: to be checked node
+        # O(n^2?)
         # 23%, 61ms
+        """
         if head == None: return None
         current = head
         check = head.next
-        while current.next is not None:
-            while check is not None:
-                if current.val == check.val:
-                    check=check.next
-                    if check == None:
-                        current.next = check
-                else:
-                    current.next=check
-                    current=check
-                    check = current.next
+        while current is not None:
+            while check is not None and current.val == check.val:
+                current.next = check.next
+                check=check.next
+            current = current.next
         return head
-        
+        """
+        # Approach 2: enumerate each node, remove the same nodes in-place
+        # 
+        # O(n), 99%, 50ms
+        if head == None: return head
+        current = head
+        check = head.next
+        while(check != None):
+            if (current.val == check.val):
+                current.next = check.next
+                check = current.next
+            else:
+                current = current.next
+                check   = check.next
+        return head        
 s = Solution()
 test_case = [[],[1,1,2],[1,1,2,3,3]]
 #test_case = [[1,1,2,3,3]]
