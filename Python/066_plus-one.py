@@ -33,9 +33,8 @@ class Solution(object):
                 digits[i]+=1
                 return digits
         # all digits are 9, add one digit in front
-        r = [1]
-        r.extend(digits)
-        return r
+        digits.insert(0,1)
+        return digits
 
 s = Solution()
 test_case = [[1,2,3], [4,3,2,1],[9,9,9]]
