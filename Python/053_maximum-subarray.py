@@ -30,8 +30,9 @@ class Solution:
         # Time O(n), 87% 46ms
         r = nums[0]
         for i in range(1, len(nums)):
-            nums[i] = max(nums[i] + nums[i-1], nums[i])
-            if r< nums[i]: r = nums[i] 
+            j = nums[i] + nums[i-1]
+            if j > nums[i]: nums[i] = j
+            if r < nums[i]: r = nums[i]
         return r
         # Solution 3: accumulate sum, remember the max, re-accumate if sum < 0
         # O(n), 36% 54ms
