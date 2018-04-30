@@ -25,21 +25,17 @@ class Solution(object):
         :rtype: List[int]
         """
         # plus 1 from right most digit, mode 10 and save carry
-        # O(n), 85%, 36ms
-        carry = 1
+        # O(n), 98%, 34ms
         for i in range(len(digits)-1,-1,-1):
-            if carry == 1:
-                if digits[i] == 9:
-                    digits[i] = 0
-                else:
-                    digits[i]+=1
-                    carry = 0
-                    return digits
-        if carry == 1:
-            r = [1]
-            r.extend(digits)
-            return r
-        return digits
+            if digits[i] == 9:
+                digits[i] = 0
+            else:
+                digits[i]+=1
+                return digits
+        # all digits are 9, add one digit in front
+        r = [1]
+        r.extend(digits)
+        return r
 
 s = Solution()
 test_case = [[1,2,3], [4,3,2,1],[9,9,9]]
