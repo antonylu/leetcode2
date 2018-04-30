@@ -21,15 +21,12 @@ class Solution(object):
         :type b: str
         :rtype: str
         """
+        # Solution 1: brute force
         # convert string to binary
         # add
         # convert binary to string
         # 99%, 36ms
-        v1 = int(a,base=2)
-        v2 = int(b,base=2)
-        sum = v1+v2
-        s = bin(sum)
-        return s[2:]
+        return bin(int(a, 2) + int(b, 2))[2:]
         
 
 s = Solution()
