@@ -26,10 +26,13 @@ class Solution(object):
         """
         # straightforward
         # 89% 40ms
-        for i in range(n):
-            nums1[m+i] = nums2[i]
+#        for i in range(n):
+#            nums1[m+i] = nums2[i]
+        # straightforward
+        # 99% 38ms
+        nums1[m:]=nums2
         nums1.sort()
-            
+
 s = Solution()
 #test_case = [[1,2,3,0,0,0],[2,5,6]]
 i = [[1,2,3,0,0,0],[2,5,6]]
