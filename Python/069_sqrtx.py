@@ -66,6 +66,9 @@ class Solution(object):
             else:
                 max = mid-1
         
+        # Approach 3: Newton method (?)
+        #   Time O(log n?)
+        #  TBI
 
 s = Solution()
 test_case = [4,8,9,81,80,2147395599]
