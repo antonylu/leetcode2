@@ -24,8 +24,8 @@ class Solution:
         # Solution 2: Dynamic programming
         # divide and conqure, the final optimization is determined by every optimized solution of each sub-question
         # > For each item in the array, find the largest sum of any subarray ended in that item
-        # > and it's either the previous item alone or the previous+current item
-        # > Save the result in-place, so we just need to save the maximum of the item and its previous item
+        # > and it's either the current item alone [c] or the previous+current item [..c]
+        # > Save the result in-place, so we just need to save the maximum of the current item and its previous+current item
         # > return the maximum of the array
         # Time O(n), 87% 46ms
         r = nums[0]
