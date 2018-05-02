@@ -61,6 +61,12 @@ class Solution(object):
         if p.val != q.val : return False
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
+        # Approach 3: recursive, optimize
+        # O(n), 97%
+        if p == None and q == None: return True
+        if bool(p) ^ bool(q) : return False
+        if p.val != q.val : return False
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         
         
 s = Solution()
