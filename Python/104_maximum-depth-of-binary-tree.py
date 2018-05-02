@@ -31,6 +31,12 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # Approach 2: Brute force, DFS and save max-depth
+        # Optimization by removing checks
+        # 52ms, 98%
+        if root == None: return 0
+        return 1+max(self.maxDepth(root.right), self.maxDepth(root.left))
+
         # Approach 1: Brute force, DFS and save max-depth
         # 78ms, 9%
         if root == None: return 0
@@ -39,7 +45,8 @@ class Solution(object):
         if root.right == None: return 1 + self.maxDepth(root.left)
         return 1+max(self.maxDepth(root.right), self.maxDepth(root.left))
 
-
+        # Approach 3: BFS, Iteration with QUEUE, collections.deque
+        # Todo:
         
         
 s = Solution()
