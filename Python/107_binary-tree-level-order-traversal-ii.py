@@ -67,10 +67,11 @@ class Solution(object):
         return list[::-1]
         
 
-        
-s = Solution()
-t = [3,9,20,null,null,15,7]
-#i = [[1,2,3,0,0,0],[2,5,6]]
-#for in in test_case:
-print(s.levelOrderBottom(t))
+if __name__ == "__main__":
+    import helper
+    t = helper.TestHelper()
+    test = [3,9,20,None,None,15,7]
+    root = t.listToBinaryTree(test)
 
+    s = Solution()
+    print(s.levelOrderBottom(root))
