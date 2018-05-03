@@ -50,9 +50,10 @@ class Solution(object):
 #        if p.val != q.val : return False
 #        return self.isSymmetricTree(p.left, q.right) and self.isSymmetricTree(p.right, q.left)
 
-        # Approach 2: use stack to do DFS recursion, return False if check fail. 
+        # Approach 4: iteration, use stack to do DFS recursion, return False if check fail 
+        # 71%, 45ms
         if root == None: return True
-        s = [[root.left,root,right]]
+        s = [[root.left,root.right]]
         while (len(s)>0):
             [p,q] = s.pop()
             if p == None and q == None: continue
