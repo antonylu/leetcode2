@@ -49,6 +49,23 @@ class Solution(object):
             list.insert(0,subList)
         return list
 
+        # Approach 1a: 
+        # BFS, append to list, reverse list
+        # O(n), 73%, 47ms
+        if not root: return []
+        q = deque([root])
+        list = []
+        while (len(q)>0):
+            subList = []
+            level_number = len(q)
+            for i in range(level_number):
+                n = q.popleft()
+                subList.append(n.val)
+                if (n.left): q.append(n.left)
+                if (n.right): q.append(n.right)
+            list.append(subList)
+        return list[::-1]
+        
 
         
 s = Solution()
