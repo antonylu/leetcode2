@@ -42,6 +42,12 @@ class Solution(object):
         # O(n) 8% 129ms
         max = len(nums)
         if max == 0: return None
+        return self.add2tree(nums)
+
+        # Improve by separate checking 0 only once
+        # 90%, 86ms
+    def add2tree(self,nums):
+        max = len(nums)
         mid = max//2
         node = TreeNode(nums[mid])
         if max == 1: return node
@@ -49,6 +55,8 @@ class Solution(object):
         if max == 2: return node
         node.right = self.sortedArrayToBST(nums[mid+1:max])
         return node
+
+
 
 
 
