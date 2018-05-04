@@ -39,24 +39,17 @@ class Solution(object):
         # nums[len//2] as root, divide left/right as two sub-trees
         # Similar to binary search, min, mid, max
         # create tree recursively
-        # O(n) 8% 129ms
+        # improve by remove checks
+        # O(n) 45% 95ms
         max = len(nums)
         if max == 0: return None
-        return self.add2tree(nums,max)
-
-        # Improve by separate checking 0 only once
-        # 90%, 86ms
-        # Improve by separate checking 0 and with fixed length
-        # 13%, 116ms
-    def add2tree(self,nums,max):
         mid = max//2
         node = TreeNode(nums[mid])
-        if max == 1: return node
-        node.left = self.add2tree(nums[0:mid],mid)
-        if max == 2: return node
-        node.right = self.add2tree(nums[mid+1:max],max-mid-1)
+        #if max == 1: return node
+        node.left = self.sortedArrayToBST(nums[0:mid])
+        #if max == 2: return node
+        node.right = self.sortedArrayToBST(nums[mid+1:max])
         return node
-
 
 
 
