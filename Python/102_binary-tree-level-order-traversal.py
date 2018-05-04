@@ -48,7 +48,9 @@ class Solution(object):
                 if (n.right): q.append(n.right)
             list.append(subList)
         return list
-        
+        # Approach 2:
+        # use List instead of deque because each iteration just handle One each level
+        # perhaps performance would be better (?)
 
 if __name__ == "__main__":
     import helper
