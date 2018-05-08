@@ -44,9 +44,11 @@ class Solution(object):
         # if has child, return hasPathSum(left) or hasPathSum(right)
         # if None, return False
         # 58ms, 94%
+        # 56ms, 99%, check right first
+
         if not root: return False
         if not root.left and not root.right: return sum == root.val
-        return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)
+        return self.hasPathSum(root.right, sum - root.val) or self.hasPathSum(root.left, sum - root.val)
 
 if __name__ == "__main__":
     import helper
