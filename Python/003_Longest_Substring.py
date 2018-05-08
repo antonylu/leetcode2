@@ -21,7 +21,7 @@ class Solution(object):
         # Approach #1, brute force, 
         # search character s[j] in s[i,j]
         # if not found, next
-        # if found at k, maximum = max(maximum, j-i). i = k
+        # if found at k, maximum = max(maximum, j-i). i = k+1
         # Python 2: 106ms, 66%
         # Python 3: 84ms, 92%
         length = len(s)
@@ -36,6 +36,13 @@ class Solution(object):
         maximum = max(maximum, j-i+1) 
         return maximum
         
+    def lengthOfLongestSubstring2(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        # Approach #2, 
+        # use hash map to save/get position 
 
 s=Solution()
 tc=["abcabcbb","bbbbb", "pwwkew","c","au","abcd"]
