@@ -22,6 +22,12 @@ class Solution(object):
         :rtype: int
         """
         # Approach #4, Could you implement it in-place?
+        # use xor
+        # O(n), 99%, 37ms
+        r = 0
+        for i in nums:
+            r ^= i
+        return r
 
 
         # Approach #3, enumerate 
@@ -36,7 +42,7 @@ class Solution(object):
                 del dict[i]
             else:
                 dict[i]=0
-        for k in dict.keys():
+        for k in dict:
             return k
 
         # Approach #1, enumerate 
