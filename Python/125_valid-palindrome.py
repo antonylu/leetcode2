@@ -20,6 +20,19 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+        # Approach #3, use filter isalnum()
+        # 99%, 52ms
+        s = s.lower()
+        s = filter(str.isalnum, str(s))
+        (mid,odd) = divmod(len(s),2)
+        s1 = s[:mid]
+        if odd: 
+            s2 = s[:mid:-1]
+        else:
+            s2 = s[:mid-1:-1]
+        
+        return s1 == s2
+
         # Approach #1, brute force
         # compare character by character, with min and max index
         # ignore any non-alphanumeric characters.
