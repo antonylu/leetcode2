@@ -33,26 +33,25 @@ class Solution(object):
         :rtype: int
         """
         # Approach #1, 
-        # find a bottom, then find top
-        # sum += prices[top] - prices[bottom]
-        # keep bottom and sum.
-        # whenever a bottom is found, find a top
-        # whenever a top is found, accumulate sum
-        # then find the next bottom
+        # find a bottom as buy point
+        # whenever a lower price, bottom is updated
+        # whenever a higher price, 
+        #   cash out as if we bought it at bottome and sell it at the high price
+        #       sum += (todays' price -bottom)
+        #   set the bottom as today's price
         #
-        # new bottom: prices[i] <= prices[i-1]
-        # new top:    prices[i] > prices[i-1]
         # O(n), 15.23%, 55ms
+        # improve by removing list dereference
+        # O(n), 99%, 37ms
         if not prices: return 0
         sum = 0
         bottom = prices[0]
-        top = bottom
-        for i in range(1,len(prices)):
-            if prices[i] <= bottom:
-                bottom = prices[i] 
+        for i in prices:
+            if i <= bottom:
+                bottom = i
             else:
-                sum += (prices[i] - bottom)
-                bottom = prices[i]
+                sum += (i - bottom)
+                bottom = i
         return sum
 
 
@@ -61,9 +60,9 @@ class Solution(object):
 
 
 if __name__ == "__main__":
-    tc = [[7,1,5,3,6,4],[1,2,3,4,5],[7,6,4,3,1],[]]
+    tc  = [[7,1,5,3,6,4],[1,2,3,4,5],[7,6,4,3,1],[]]
+    ans = [7,4,0,0]
     s = Solution()
-    for t in tc:
-        print(t)
-        print(s.maxProfit(t))
+    for i,t in enumerate(tc):
+        if(s.maxProfit(t) != ans[i]): print("incorrect: ",i,t)
 
