@@ -21,15 +21,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Approach #4, Could you implement it in-place?
+
+
         # Approach #3, enumerate 
         # use dict
         # if it is not in dict, append it to the hash with value 0
         # if it is in dict, remove it from the table
-        # Python 2: Time Limit Exceeded
+        # Python 2: 44ms, 62%
         # Python 3: 44ms, 95%
         dict = {}
         for i in nums:
-            if i in dict.keys():
+            if i in dict:
                 del dict[i]
             else:
                 dict[i]=0
