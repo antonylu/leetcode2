@@ -43,15 +43,14 @@ class Solution(object):
         # O(n), 15.23%, 55ms
         # improve by removing list dereference
         # O(n), 99%, 37ms
+        # Python 3: 100% 40ms
         if not prices: return 0
         sum = 0
         bottom = prices[0]
         for i in prices:
-            if i <= bottom:
-                bottom = i
-            else:
+            if i > bottom:
                 sum += (i - bottom)
-                bottom = i
+            bottom = i
         return sum
 
 
