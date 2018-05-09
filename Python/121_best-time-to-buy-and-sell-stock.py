@@ -26,6 +26,20 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # Approach #2, find bottom and top
+        # keep bottom and maximumProfit. Whenever any prices is lower than bottom, bottom is updated
+        # keep searching maximumProfit until list end.
+        # O(n),36%, 50ms
+        bottom = 0
+        maxPro = 0
+        for i in range(1,len(prices)):
+            if prices[i] < prices[bottom]:
+                bottom = i
+            else:
+                maxPro = max(maxPro, prices[i] - prices[bottom])
+        return maxPro
+
+    def maxProfit2(self, prices):
         # Approach #1, brute force.
         # Search every possible i, j, where i>j and prices[j] - [i] is maximum
         # nested loop
@@ -37,10 +51,6 @@ class Solution(object):
                 maximum = max(maximum, prices[j]-prices[i])
         return maximum
         
-        # Approach #2, find bottom and top
-        # keep bottom and maximumProfit. Whenever any prices is lower than bottom, bottom is updated
-        # keep searching maximumProfit until list end.
-        # O(n)
         
 
 
