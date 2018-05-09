@@ -23,7 +23,19 @@ class Solution(object):
         # Approach #1, brute force
         # compare character by character, with min and max index
         # ignore any non-alphanumeric characters.
-        # O(n)
+        # O(n), 90%, 65ms
+        if not s: return True
+        s = s.upper()
+        min = 0
+        max = len(s)-1
+        while(min<max):
+            if not s[min].isalnum(): min+=1; continue
+            if not s[max].isalnum(): max-=1; continue
+            if s[min] != s[max]: 
+                return False
+            min+=1
+            max-=1
+        return True
 
         # Approach #2, brute force
         # strip non alphanumeric
