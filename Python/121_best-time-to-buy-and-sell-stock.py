@@ -30,13 +30,16 @@ class Solution(object):
         # keep bottom and maximumProfit. Whenever any prices is lower than bottom, bottom is updated
         # keep searching maximumProfit until list end.
         # O(n),36%, 50ms
-        bottom = 0
+
+        # improved by removing list deference of bottom, 82%, 42ms
+        if not prices: return 0
+        bottom = prices[0]
         maxPro = 0
         for i in range(1,len(prices)):
-            if prices[i] < prices[bottom]:
-                bottom = i
+            if prices[i] < bottom:
+                bottom = prices[i] 
             else:
-                maxPro = max(maxPro, prices[i] - prices[bottom])
+                maxPro = max(maxPro, prices[i] - bottom)
         return maxPro
 
     def maxProfit2(self, prices):
@@ -55,7 +58,7 @@ class Solution(object):
 
 
 if __name__ == "__main__":
-    tc = [[7,1,5,3,6,4],[7,6,4,3,1]]
+    tc = [[7,1,5,3,6,4],[7,6,4,3,1],[]]
     s = Solution()
     for t in tc:
         print(t)
