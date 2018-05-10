@@ -20,6 +20,19 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        # Approach #3, Floyd’s Cycle detection 
+        # 龜兔賽跑 Turtle & Rabbit race
+        # If there is a loop, Rabbit will catch up Turtle finally
+        # 82ms, 27%
+        try:
+            turtle  = head
+            rabbit = head.next
+            while turtle != rabbit:
+                turtle = turtle.next
+                rabbit = rabbit.next.next
+            return True
+        except:
+            return False
         
         # Approach #2 enumerate, use set to keep every node
         # O(n), 93%, 68ms
