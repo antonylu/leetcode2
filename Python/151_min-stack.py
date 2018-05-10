@@ -21,39 +21,48 @@ class MinStack(object):
     # Approach #1, use list as stack
     # implement min
     # 997ms, 18%
-    stack = []
+    # Approach #2, use list as stack
+    # improve getMin() by push (x,min) tuple 
+    # 87ms, 57%
     def __init__(self):
         """
         initialize your data structure here.
         """
-        del self.stack[:]
+        #del self.stack[:]
+        self.stack = []
 
     def push(self, x):
         """
         :type x: int
         :rtype: void
         """
-        self.stack.append(x)
+        mini = self.getMin()
+        if mini == None or x < mini: mini = x
+        self.stack.append((x,mini))
 
     def pop(self):
         """
         :rtype: void
         """
-        return self.stack.pop()
-        
+        (x,m) = self.stack.pop()
+        return x
     def top(self):
         """
         :rtype: int
         """
-        return self.stack[len(self.stack)-1]
-        
+        (x,m) = self.stack[len(self.stack)-1]
+        return x
 
     def getMin(self):
         """
         :rtype: int
         """
-        return min(self.stack)
+        if not len(self.stack): return None
+        (x,m) = self.stack[len(self.stack)-1]
+        return m
 
+    def debug(self):
+        print(self.stack[len(self.stack)-1])
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
@@ -74,7 +83,16 @@ if __name__ == "__main__":
     print(minStack.getMin())#;   --> Returns -2.
     minStack = MinStack();
     minStack.push(-1);
-    print(minStack.top())#;      --> Returns 0.
-    print(minStack.getMin())#;   --> Returns -2.
+    print(minStack.top())#;      --> Returns -1.
+    print(minStack.getMin())#;   --> Returns -1.
     
+    minStack = MinStack();
+    minStack.push(0);
+    minStack.push(1);
+    minStack.push(0);
+    print(minStack.getMin())#;   --> Returns 0.
+    minStack.pop();
+    print(minStack.getMin())#;   --> Returns 0.
+    minStack.debug();
+        
     
