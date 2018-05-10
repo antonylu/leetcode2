@@ -20,10 +20,23 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        
+        # Approach #2 enumerate, use set to keep every node
+        # O(n), 93%, 68ms
+        node = head 
+        s = set()
+        while node:
+            if node in s:
+                return True
+            s.add(node)
+            node=node.next
+        return False    
+        
+
         # Approach #1 enumerate, use hash table to keep every node
         # return false if next is None
         # return true if next is in hash keys
-        # O(n), 182ms 0%
+        # O(n), 92ms 14%
         node = head 
         dict ={}
         while node:
