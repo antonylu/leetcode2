@@ -49,15 +49,8 @@ class Solution(object):
         a = headA
         b = headB
         while a is not b:
-            if a is None: 
-                a = headB
-            else:
-                a = a.next
-            if b is None: 
-                b = headA
-            else:
-                b = b.next
-
+            a = headB if a is None else a.next
+            b = headA if b is None else b.next
         return a
         
 
