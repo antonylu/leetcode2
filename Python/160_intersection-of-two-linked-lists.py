@@ -36,6 +36,31 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
+        # Approach #3, TODO
+        # a trick that traversal twice for both lists at the same time
+        # Similar to "turtle and rabbit race", if they have intersection, consder one list is a head of another list with x nodes
+        # connect end of a to start of b, connect end of b to start of a
+        # two animals should traverse both list with the same distance
+        # a stops at end of list b, and b stops at end of list a
+        # if there is a intersection, they should be stopped at the same end nodes
+        # if no intersection, they stop at different nodes
+        # O(m+n)
+        # 95%, 345ms
+        a = headA
+        b = headB
+        while a is not b:
+            if a is None: 
+                a = headB
+            else:
+                a = a.next
+            if b is None: 
+                b = headA
+            else:
+                b = b.next
+
+        return a
+        
+
         # Approach #2, use hash table or set to speed up lookup
         # O(n)+O(m)
         # 56%, 381ms
