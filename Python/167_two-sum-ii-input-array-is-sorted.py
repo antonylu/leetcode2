@@ -33,7 +33,21 @@ class Solution(object):
 
 
         # Approach #2, binary search sorted list for O(N logN)
-        
+        # min,max,mid
+        # 85ms, 5%
+        for i in range(0, len(numbers)-1) :
+            search = target - numbers[i]
+            min = i+1
+            max = len(numbers) -1 
+            while min <= max:
+                mid = (min+max)//2
+                if (search == numbers[mid]):
+                    return [i+1,mid+1]
+                if search > numbers[mid]:
+                    min = mid +1
+                else:
+                    max = mid -1
+
         
         # Approach #3
         # no2. memorization, hash table, put (target - numbers[i]) in dict
