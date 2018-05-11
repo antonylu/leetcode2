@@ -31,6 +31,20 @@ class Solution(object):
         #        if (target == numbers[i]+numbers[j] ):
         #            return [i,j]
 
+        # Approach #4
+        # improve Approach #2 by using enumerate
+        # memorization, hash table, put (target - numbers[i]) in dict
+        # if it exists then both found. One-pass hash table
+        # hash table look up average = O(1)
+        # 
+        # space O(n)
+        # time  O(n), 23%, 49 ms
+        d = {}
+        for i, n in enumerate(numbers):
+            s = target - n
+            if s in d:
+                return [d[s] + 1, i+1]
+            d[n] = i
 
         # Approach #2, binary search sorted list for O(N logN)
         # min,max,mid
