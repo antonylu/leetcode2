@@ -34,9 +34,9 @@ class Solution(object):
         # Approach #1, manipulate list
         # concatenate the list 
         # Time O(n), Space O(n)
-        # 23%, 94ms
+        # 88%
         l = len(nums)
-        k = k % l
+        #k = k % l
         ans = nums[l-k:] + nums[:l-k]
         for i in range(l):
             nums[i]=ans[i]
