@@ -47,9 +47,9 @@ class Solution(object):
         r = ""
         while n > 26:
             (n,b) = divmod(n-1,26)
-            r+=number2char[b]
-        r+=number2char[n-1]
-        return r[::-1]
+            r = number2char[b] + r
+        r = number2char[n-1] +r
+        return r
 
 if __name__ == "__main__":
     s=Solution()
