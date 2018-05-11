@@ -39,6 +39,7 @@ class Solution(object):
         # 
         # space O(n)
         # time  O(n), 23%, 49 ms
+        # Python 3: 100%
         d = {}
         for i, n in enumerate(numbers):
             s = target - n
