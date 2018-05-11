@@ -39,7 +39,8 @@ class Solution(object):
         sum = 0
         for c in s:
             sum = sum * 26
-            sum = sum + ord(c) - ord('A') +1
+            # sum = sum + ord(c) - ord('A') +1
+            sum = sum + ord(c) - 64
         return sum
 
 if __name__ == "__main__":
