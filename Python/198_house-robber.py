@@ -20,7 +20,7 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 """
 
 class Solution(object):
-    def rob(self, nums):
+    def rob2(self, nums):
         """
         :type nums: List[int]
         :rtype: int
@@ -47,11 +47,13 @@ class Solution(object):
         if not nums: return 0
         return robHouse(len(nums)-1)
         
+    def rob(self, nums):
         #
-        # Approach #3, iterative
-        #
+        # Approach #3, iteration
+        # 32ms, 78%
         last, now = 0, 0
-        for i in nums: last, now = now, max(last + i, now)
+        for i in nums: 
+            (last, now) = (now, max(last + i, now))
         return now
 
 if __name__ == "__main__":
