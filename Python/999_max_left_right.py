@@ -25,6 +25,7 @@ the 3 of right parts are 1,1,7
 """
 
 class Solution(object):
+    # Approach #1, brute force, enumerate all possible cases and keep the maximum
     def maxLeftRight(self, lst, L, R):
         """
         :type lst: list of Non-negative int
@@ -32,18 +33,11 @@ class Solution(object):
         :type R: int
         :rtype: int
         """
-        # Approach #1, brute force, enumerate all possible cases and keep the maximum
         maxi = 0
         for i in range(len(lst)-L-R+1):
             for j in range(i+L,len(lst)-R+1):
-                maxi = max(maxi, self.count(lst,i,L) + self.count(lst,j,R))
-        
+                maxi = max(maxi, sum(lst[i:i+L]) + sum(lst[j:j+R]))
         return maxi
-    def count(self,lst,i,n):
-        s = 0
-        for k in range(i,i+n):
-            s += lst[k]
-        return s
 
 if __name__ == "__main__":
     s=Solution()
