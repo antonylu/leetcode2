@@ -50,4 +50,35 @@ class TestHelper(object):
                     q.append(n)
         return root
 
-        
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class LinkListHelper(object):
+    def listToLinkList(self, list):
+        """
+        :type list: List[int]
+        :rtype: ListNode
+        """
+        # Approach #1
+        # Brute force 
+        dummy_head = ListNode(0)
+        current_node = dummy_head 
+        for i in list:
+            current_node.next = ListNode(i)
+            current_node = current_node.next
+        return dummy_head.next
+            
+    def linkListToList(self, list):
+        """
+        :type list: ListNode 
+        :rtype: List
+        """
+        curr = list
+        ans = []
+        while curr:
+            ans.append(curr.val)
+            curr = curr.next
+        return ans
