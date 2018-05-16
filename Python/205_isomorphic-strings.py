@@ -35,15 +35,13 @@ class Solution(object):
         # enumerate s and t, replace t with a characters
         # compare s,t
         # O(2n) = O(n)
-        # 66%, 57ms
+        # 95%, 46ms
         dict = {}
         a=s
         b=t
         s = list(a)
         t = list(b)
         sl = len(s)
-        st = len(t)
-        if sl != st: return False
 
         for i in range(sl):
             if s[i] in dict:
