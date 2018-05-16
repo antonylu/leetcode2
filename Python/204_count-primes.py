@@ -36,16 +36,18 @@ class Solution(object):
     # https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
     # O(NlogNlogN)
     # 1019ms, 48%
+    # 946ms, 50%
     def countPrimes(self, n):
         a = 0
-        temp = [1] * (n)
-        for i in range(2, n):
+        temp = [True] * (n)
+        i = 2
+        while i*i < n:
             if (temp[i]):
                 j = i * i
                 while (j <= n-1):
-                    temp[j] = 0
+                    temp[j] = False
                     j = j + i
-                    
+            i+=1
         for i in range(2, n):
             if (temp[i]):
                 a+=1
