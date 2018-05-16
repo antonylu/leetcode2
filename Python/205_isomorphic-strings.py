@@ -30,6 +30,12 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+        # Approach #2, set with zip
+        # zip(s,t) shall be one on one from s mapping to t
+        # so the length of set of zip(s,t) shall be the same as set(s) and set(t)
+        # 47ms, 92%
+        return len(set(zip(s,t) ) ) == len(set(s)) == len(set(t))
+
         # Approach #1, hash table
         # dict[s]=t
         # enumerate s and t, replace t with a characters
@@ -61,6 +67,7 @@ class Solution(object):
                 dict[s[i]] = t[i]
                 s[i]=t[i]
         return s == t
+
 
 if __name__ == "__main__":
     s = Solution()
