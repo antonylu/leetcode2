@@ -30,10 +30,20 @@ class Solution(object):
         # n-1 + n-2 + ... + 1 = n*(n-1)/2
         # O(n^2)
         
+
         # Approach #2, use Set
         # if no duplicates, len(set(nums)) == len(nums)
         # O(n), 52ms, 53%
         return len(set(nums)) != len(nums)
+
+        # Approach #3, use Set
+        # if no duplicates, len(set(nums)) == len(nums)
+        # O(n), 67ms, 17%
+        s = set()
+        for i in nums:
+            if i in s: return True
+            s.add(i)
+        return False
 
 
 if __name__ == "__main__":
