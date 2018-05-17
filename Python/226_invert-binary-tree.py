@@ -37,6 +37,21 @@ class Solution(object):
         :type root: TreeNode
         :rtype: TreeNode
         """
+        # Approach #1, DFS, switch left/right
+        # recursive with stack
+        # 35ms, 67%
+
+        if not root: return root
+        # pre-order
+        tmp = root.left
+        root.left  = root.right
+        root.right = tmp
+
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
+
+
         # Approach #1, BFS, switch left/right
         # use deque
         # 33ms, 83%
@@ -67,6 +82,7 @@ if __name__ == "__main__":
     for test in tc:
         print(test)
         root = t.listToBinaryTree(test)
-        print(t.binaryTreeToList(s.invertTree(root)))
-        #assert(s.invertTree(root) == a)
+        r=t.binaryTreeToList(s.invertTree(root))
+        print(r)
+        assert(r == a[0])
     
