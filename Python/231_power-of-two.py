@@ -23,17 +23,31 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
+        # Approach #2, bitwise operation
+        # if n is power of 2, the binary form has only one bit in 1, the other bits are all 0
+        # example,          n-1:
+        #  1: 00000001    0: 00000000
+        #  2: 00000010    1: 00000001
+        #  4: 00000100    3: 00000011
+        #  8: 00001000    7: 00000111
+        #  
+        # n^(n-1)=0
+        # O(1),  44ms, 72%
+        if n ==0: return False
+        return n&(n-1)==0
+
         # Approach #1, lookup table
         # O(1)
         # 43ms, 81%
         return n in power2
         
 
+        
 
 
 
 if __name__ == "__main__":
-    tc = [1,16,218]
+    tc = [0,1,16,218]
     a  = [True,True,False]
     s = Solution()
     for test in tc:
