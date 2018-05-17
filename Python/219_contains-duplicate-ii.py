@@ -27,6 +27,8 @@ class Solution(object):
         # for i in nums, check if every number nums[i] is in dict, if yes, check if i-index <=k
         # else, update dict[nums[i]] = i, so every index in hash table are the largest (nearest)
         # O(n), 20%
+        # improve with length check, 99%
+        if not nums or k<0 or len(nums)==len(set(nums)):return False 
         dict = {}
         for i,v in enumerate(nums):
             if v in dict:
