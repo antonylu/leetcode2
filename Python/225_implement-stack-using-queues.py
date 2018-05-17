@@ -73,12 +73,12 @@ class MyStack(object):
 
 class MyStack2(object):
     # Approach #2, use list for stack
-    #
+    # 80%
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        
+        self.queue = []
 
     def push(self, x):
         """
@@ -86,13 +86,14 @@ class MyStack2(object):
         :type x: int
         :rtype: void
         """
-        
+        self.queue.append(x)
 
     def pop(self):
         """
         Removes the element on top of the stack and returns that element.
         :rtype: int
         """
+        return self.queue.pop()
         
 
     def top(self):
@@ -100,6 +101,7 @@ class MyStack2(object):
         Get the top element.
         :rtype: int
         """
+        return self.queue[len(self.queue)-1]
         
 
     def empty(self):
@@ -107,13 +109,14 @@ class MyStack2(object):
         Returns whether the stack is empty.
         :rtype: bool
         """
+        return len(self.queue) == 0
 
 
 
 if __name__ == "__main__":
     # Your MyStack object will be instantiated and called as such:
 
-    obj = MyStack()
+    obj = MyStack2()
     obj.push(1)
     obj.push(2)
     param_2 = obj.pop()
