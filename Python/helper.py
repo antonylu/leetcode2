@@ -50,6 +50,25 @@ class TestHelper(object):
                     q.append(n)
         return root
 
+    def binaryTreeToList(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List
+        """
+        # Approach 1: 
+        # Brute force, BFS and append to list
+        ans = []
+        if not root: return ans
+        q = deque([root])
+        while(len(q) > 0):
+            node = q.popleft()
+            if node:
+                ans.append(node.val)
+                q.append(node.left)
+                q.append(node.right)
+        return ans
+        
+
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, x):
