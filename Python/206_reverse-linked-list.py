@@ -26,6 +26,20 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        # Approach #2, use 3 pointers
+        # 42ms, 81%
+        if not head: return head
+        a = head
+        b = head.next
+        while b:
+            c = b.next
+            b.next = a
+            a = b
+            b = c
+        head.next = None
+        return a
+            
+
         # Approach #1, use stack
         # push node to stack
         # create a new list with popped nodes
@@ -56,4 +70,4 @@ if __name__ == "__main__":
         t_list = l.listToLinkList(t)
         print(t)
         print(l.linkListToList(s.reverseList(t_list)))
-        assert(l.linkListToList(s.reverseList(t_list)) == t_list )
+        #assert(l.linkListToList(s.reverseList(t_list)) == t_list )
