@@ -26,6 +26,13 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        # Approach #2, O(1) space?
+        # 1. use fas/slow to find the middle node
+        # 2. reverse the 2nd half
+        # 3. compare two link list
+        # Time complexity = O(n/2+n/2+n/2) = O(n)
+        
+        
         # Approach #1, brute force
         # convert the LinkList to a list
         # compare all items, e.g, list[0] with list[len(list)-1]
