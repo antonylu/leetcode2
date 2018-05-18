@@ -23,6 +23,16 @@ typically using all the original letters exactly once.
 """
 class Solution(object):
     def isAnagram(self, s, t):
+        # Approach #2, brute-force count every lowercase i s and t
+        # if any of them different, return False
+        #
+        # 99%
+        lower = 'abcdefghijklmnopqrstuvwxyz'
+        for c in lower:
+            if s.count(c) != t.count(c): return False
+        return True
+
+    def isAnagram2(self, s, t):
         """
         :type s: str
         :type t: str
