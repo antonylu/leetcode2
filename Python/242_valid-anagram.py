@@ -32,6 +32,7 @@ class Solution(object):
         # count every character of the word 
         # compare the occurances
         # O(n), 70%
+        # improve, 93%
         def count(s):
             """
             type s: str
@@ -44,10 +45,7 @@ class Solution(object):
                 else:
                     dict[c]=0
             return dict
-        s1 = count(s)
-        t1 = count(t)
-
-        return s1 == t1
+        return count(s) == count(t)
         
         
                 
