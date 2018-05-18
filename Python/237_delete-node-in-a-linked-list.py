@@ -12,7 +12,7 @@ Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node wi
 #         self.next = None
 
 class Solution(object):
-    def deleteNode(self, node):
+    def deleteNode2(self, node):
         """
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
@@ -33,6 +33,15 @@ class Solution(object):
             node = node.next
         tmp.next = None
             
+    def deleteNode(self, node):
+        # Approach #2, by pass
+        # 
+        # change value 3->4
+        # drop node 4
+        # 3.next = 4.next
+        # O(1), 90%
+        node.val = node.next.val
+        node.next = node.next.next
                 
 if __name__ == "__main__":
     tc = [1,2,3,4]
