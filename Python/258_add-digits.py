@@ -18,6 +18,14 @@ class Solution(object):
         :type num: int
         :rtype: int
         """
+        # Approach #2, no loop
+        # https://en.wikipedia.org/wiki/Digital_root
+        # f(n) = 0                  if n=0
+        #      = 1 + ((n-1)%9)      if n>0
+        # 
+        # O(1), 92%
+        return 0 if num == 0 else (num-1)%9 +1
+        
         # Approach #1, brute-force,
         # O(1), 84%
         while num > 9:
@@ -29,6 +37,7 @@ class Solution(object):
 
 if __name__ == "__main__":
     tc = [38,1231,251234,3584357]
+    ans = [2,7,8,8]
     s = Solution()
     for t in tc:
         print(s.addDigits(t) )
