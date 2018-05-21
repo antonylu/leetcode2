@@ -20,6 +20,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Approach #2, tricky way
+        # since it is an AP (Arithmetic Progression) 0~n, we know the sum is (n+0)(1+n)/2
+        # so the missing number is n*(1+n)/2 - sum(nums) where n=len(nums)+1
+        # O(n), 90%
+        n=len(nums)
+        return n*(1+n)//2 - sum(nums)
+
         # Approach #1, brute-force
         # convert to set
         # enumerate if n in set
