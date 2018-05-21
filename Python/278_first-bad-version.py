@@ -33,6 +33,19 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # Approach #2a, binary search refactor
+        # O(log n), 32ms, 58%
+        max = n
+        min = 1
+        while min < max:
+            mid = min+(max-min)//2
+            if isBadVersion(mid):
+                max = mid
+            else:
+                min = mid+1
+        return min
+
+
         # Approach #2, binary search
         # O(log n), 30ms, 88%
         max = n
