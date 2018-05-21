@@ -60,7 +60,7 @@ class Solution(object):
         # Time Limit Exceeded
         v=1
         while not isBadVersion(v): v+=1
-        return v-1
+        return v
         
         
 
