@@ -30,6 +30,14 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
+        # Approach #2, tricky
+        #
+        # the maximum power of 3 as integer is 3^19 = 1162261467
+        # 
+        #
+        # O(n), 60%
+        if n < 1 : return False
+        return 1162261467 % n == 0
 
         # Approach #1, naive
         #
