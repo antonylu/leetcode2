@@ -16,6 +16,35 @@ There are many calls to sumRange function.
 """
 
 
+# Approach #3, conversion
+# convert nums into another array where sum[i+1] is the sum of nums[0:i+1], sum[0] = 0
+# sumRange(i,j) = sum[j+1]-sum[i]
+#
+# nums[-2, 0, 3, -5, 2, -1] ==> sum[0,-2,-2,1,-4,-2,-3]
+# sumRange(0, 2) = sum[2+1]-sum[0] = sum[3] - 0 = 1
+# sumRange(2, 5) = sum[5+1]-sum[2] = (-3) - (-2) = -1
+#
+# sumRange(): O(1), 580ms, 24%
+#
+class NumArray(object):
+    def __init__(self, nums):
+        """
+        :type nums: List[int]
+        """
+        self.sum = [0]
+        for i in range(len(nums)):
+            self.sum.append(sum(nums[0:i+1]))
+        #print(self.sum)
+
+    def sumRange(self, i, j):
+        """
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
+        return self.sum[j+1] - self.sum[i]
+
+
 # Approach #2, hash for cache
 #
 # keep the nums
@@ -23,7 +52,7 @@ There are many calls to sumRange function.
 #
 # sumRange(): O(n)~O(1)
 # 935ms, 11%, even slower?
-class NumArray(object):
+class NumArray2(object):
 
     def __init__(self, nums):
         """
@@ -52,7 +81,7 @@ class NumArray(object):
 #
 # sumRange(): O(n), 917ms, 14%
 #
-class NumArray(object):
+class NumArray1(object):
 
     def __init__(self, nums):
         """
