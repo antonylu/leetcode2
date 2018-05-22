@@ -48,8 +48,8 @@ class Solution(object):
                 if S2P[s[i]] != pattern[i]:
                     return False
             elif pattern[i] in P2S:
-                if s[i] != P2S[pattern[i]]:
-                    return False
+                #if s[i] != P2S[pattern[i]]:
+                return False
             else:
                 S2P[s[i]] = pattern[i]
                 P2S[pattern[i]] = s[i]
