@@ -19,8 +19,8 @@ class Solution:
         # Approach #2, 
         #  num&(num-1) == 0, it is divisible by 2
         #  num&0b10101010101010101010101010101010
-        # 20%
-        return num > 0 and num&(num-1) == 0 and num&0b10101010101010101010101010101010 == 0
+        # 96%
+        return num > 0 and num&(num-1) == 0 and num&0b101010101010101010101010101010 == 0
 
 
         # Approach #1, naive
