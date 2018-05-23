@@ -21,6 +21,22 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
+        # Approach #2a, use collections.Counter
+        # Count occurance of every element in both list and intersection
+        # Oneline
+        # O(n+m), 49%
+        import collections
+        return list((collections.Counter(nums1) & collections.Counter(nums2)).elements())
+
+        
+        # Approach #2, use collections.Counter
+        # Count occurance of every element in both list and intersection
+        # O(n+m), 33%
+        c1 = collections.Counter(nums1)
+        c2 = collections.Counter(nums2)
+        c3 = c1 & c2
+        return list(c3.elements())
+
         # Approach #1, naive
         # Count occurance of every element in both list
         # append those shows in both list
@@ -46,6 +62,7 @@ class Solution(object):
 
 if __name__ == '__main__':
     tc = [([1, 2, 2, 1],[2, 2]),([1,2,2,1],[1,2,1]),([],[1,2,3])]
+    ans = [[2,2],[1,2,1],[]]
     s = Solution()
     for t in tc:
         print(s.intersect(t[0],t[1]))
