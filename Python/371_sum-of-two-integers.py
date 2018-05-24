@@ -26,12 +26,17 @@ class Solution(object):
         # a&b get all the carry bits, (a&b) <<1 get the carried result
         # continue add them into a until carry is 0
         # 
-        # This only works with Positive Integers
+        # use & mask 0xFFFFFFFF to get only 32 bit integer part
+        # use ~ to get 1's complements if negative
+        # 20%
+        MASK = 0xFFFFFFFF
+        MAX  = 0x7FFFFFFF
+
         while ( b != 0):
             carry = a & b
-            a = a ^ b
-            b = (carry << 1)
-        return a
+            a = (a ^ b) & MASK
+            b = (carry << 1)  & MASK
+        return a if a <= MAX else ~(a ^ MASK)
                     
                 
 
