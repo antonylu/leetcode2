@@ -35,6 +35,18 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # Approach #2, use bisect to do linear search
+        # O(n), 50%
+        import bisect
+        class C(object):
+            __getitem__ = lambda _, i: -guess(i)
+
+        # bisect try to get index from 1 to n, looking for -1's position
+        # when get item from C[i], it calls -guess(i) which returns -1 until it returns 0
+        # actually it is not binary search but it is linear search        
+        return bisect.bisect(C(), -1, 1, n)
+        
+
         # Approach #1, binary search
         # O(log n), 90%
         min = 1
