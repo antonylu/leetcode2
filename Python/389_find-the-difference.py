@@ -28,6 +28,21 @@ class Solution(object):
         :rtype: str
         """
         # dict, xor, diff
+        
+        # Approach #3, Count with dict
+        # 37%
+        d = dict()
+        for c in s:
+            if c in d: d[c] +=1
+            else: d[c] = 1
+        for c in t:
+            if c in d:
+                if d[c] > 0: d[c] -=1
+                else: return c
+            else: 
+                return c
+        exit(1)
+
         # Approach #2, Counter count occurence of t
         # 32%
         from collections import Counter
