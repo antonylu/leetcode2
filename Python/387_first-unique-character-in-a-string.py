@@ -19,6 +19,22 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # approach #3, the string contain only lowercase letters.
+        # look for all lowercase letters
+        # s.find, s.rfind
+        #
+        # 40ms, 100%
+        lowercases = "abcdefghijklmnopqrstuvwxyz"
+        ans = len(s)
+        for c in lowercases:
+            left = s.find(c)
+            if left != -1:
+                right = s.rfind(c)
+                if right == left:
+                    #print(left)
+                    ans = min(ans,left)
+        return ans if ans < len(s) else -1
+
         # approach #2, use dict to save first occurences 
         # count then find without conversion, sould be faster
         # O(n), 50%
@@ -49,9 +65,11 @@ class Solution(object):
 
 if __name__ == '__main__':
     tc = ["leetcode", "loveleetcode","aabbccddeeffgghhijkllkji","aadadaad"]
+    #tc = ["loveleetcode"]
     ans = [0,2,-1,-1]
     s = Solution()
     for (i) in tc:
+        #s.firstUniqChar(i)
         print(s.firstUniqChar(i))
 
 
