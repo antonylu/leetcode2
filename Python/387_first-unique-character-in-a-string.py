@@ -23,7 +23,7 @@ class Solution(object):
         # look for all lowercase letters
         # s.find, s.rfind
         #
-        # 40ms, 100%
+        # 40ms, 100%, the first time my program breaks the record!
         lowercases = "abcdefghijklmnopqrstuvwxyz"
         ans = len(s)
         for c in lowercases:
