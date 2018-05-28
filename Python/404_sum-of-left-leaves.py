@@ -21,7 +21,7 @@ class TreeNode:
         self.right = None
 
 class Solution:
-    def sumOfLeftLeaves(self, root):
+    def sumOfLeftLeaves2(self, root):
         """
         :type root: TreeNode
         :rtype: int
@@ -42,6 +42,20 @@ class Solution:
             if(n.right): 
                 q.append((n.right,False))
         return sum
+    # Approach #2, DFS with isLeft
+    # O(n), 80%
+    ans = 0
+    def sumOfLeftLeaves(self, root):
+        if not root: return 0
+        self.sumLeft(root,False)
+        return self.ans
+    def sumLeft(self, n, isLeft):
+        if(isLeft and not n.right and not n.left):
+            self.ans += n.val
+        if(n.left):
+            self.sumLeft(n.left,True)
+        if(n.right): 
+            self.sumLeft(n.right,False)
 
 if __name__ == '__main__':
     s = Solution()
