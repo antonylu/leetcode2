@@ -38,15 +38,11 @@ class Solution(object):
                 if bits == num:
                     ans[bits-1].append( "{:d}:{:0>2d}".format(h,m))
         return ans[num-1]
-
-        # Approach #2, combinations
-        # use itertools for combination
-        # enumerate all possible combination for n LED on, 
-        # 10 LEDS, get a list of itertools.combinations(10,n), 
-        # for each combination, check valid (0~11:0~59)
-        # append the time to a list which index is the number of On LED
-        # 
-
+    def readBinaryWatch(self, num):
+        """
+        :type num: int
+        :rtype: List[str]
+        """
         # Approach #3, look up table
         # there are only 10 LEDs
         # make a list[10], with all the answers (12 x 60 = 720 items)
@@ -65,9 +61,33 @@ class Solution(object):
             [], \
             [] ]
         return ans[num]
+    def readBinaryWatch2(self, num):
+        """
+        :type num: int
+        :rtype: List[str]
+        """
+        # Approach #2, combinations
+        # use itertools for combination
+        # enumerate all possible combination for n LED on, 
+        # 10 LEDS, get a list of itertools.combinations(10,n), 
+        # for each combination, check valid (0~11:0~59)
+        # append the time to a list which index is the number of On LED
+        # 
+        # complicated and may not be efficient
+        ans = [ ['0:00'], ['0:01', '0:02', '0:04', '0:08', '0:16', '0:32', '1:00', '2:00', '4:00', '8:00'] ] 
+        if num <2: return ans[num]
+        if num >8: return []
+        import itertools
+        leds = list(range(1,11))
+        c = itertools.combinations(leds,num)
+        for a in list(c):
+            #print(a)
+            z = 0
+            for i in range(num):
+                z = z | (0x1 << a[i])
 
 if __name__ == '__main__':
     s = Solution()
-    for i in range(1,11):
-        print(s.readBinaryWatch(i))
-    #print(s.readBinaryWatch(1))
+    #for i in range(1,11):
+    #    print(s.readBinaryWatch(i))
+    print(s.readBinaryWatch(3))
