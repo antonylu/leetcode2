@@ -29,6 +29,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Approach #2, 
+        # use set() to remove duplicates
+        # use sort()
+        # O(n) or O(n log n), 94%
+        s = list(set(nums))
+        s.sort(reverse=True)
+        return s[2] if len(s)>2 else s[0] 
+        
+
         # Approach #1, naive
         # evaluate each value and keep the 3 max
         # O(n), 33%
