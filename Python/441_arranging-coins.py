@@ -84,6 +84,19 @@ class Solution(object):
         # it works but leetcode rejected:
         # Your code is too long. Please reduce your code size and try again.
 
+    def arrangeCoins(self, n):
+        # Approach #4, math reverse engineering
+        # n = f(k) = (k+1)*k/2 = (k^2+k)/2
+        # k = g(n) ~= sqrt(2n+0.25)-0.5
+        # 1+2+3+...+x = n
+        # -> (1+x)x/2 = n
+        # -> x^2+x = 2n
+        # -> x^2+x+1/4 = 2n +1/4
+        # -> (x+1/2)^2 = 2n +1/4
+        # -> (x+0.5) = sqrt(2n+0.25)
+        # -> x = -0.5 + sqrt(2n+0.25)
+        # O(1), 82.6%
+        return int(((2*n+0.25)**.5)-0.5)
 
 if __name__ == '__main__':
     s = Solution()
