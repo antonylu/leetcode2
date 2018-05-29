@@ -54,6 +54,13 @@ class Solution(object):
             if len(list(c.elements())) == 0:
                 ans.append(i)
         return ans
+
+        # TODO 1
+        # Approach #1a, naive improve
+        # use Counter for p
+        # maintain a sliding window for s
+        #
+        # should be O(n)
         
     def findAnagrams(self, s, p):
         """
@@ -89,6 +96,10 @@ class Solution(object):
 
         return ans
         
+        # TODO 2
+        # Approach #3, similar to #2
+        # use list[0]*26 to hold data instead of dict, to keep both p and sliding window s
+        # maybe list == is faster and no need to del d[key]
 
 if __name__ == '__main__':
     s = Solution()
