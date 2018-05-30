@@ -30,6 +30,11 @@ class Solution(object):
         # 
         # accumulate all the numberOfBoomerangs
         # O(n^2), 22%
+        #
+        # Improve efficieny by 
+        #  1. remove duplicate dis() calls
+        #  2. use dict.values instead of dereference
+        # O(n^2), 88%
         def dis(p1,p2):
             dx = p1[0]-p2[0]
             dy = p1[1]-p2[1]
@@ -39,11 +44,11 @@ class Solution(object):
         for p in points:
             dict = {}
             for q in points:
-                dict[dis(q,p)] = 1 + dict.get(dis(q,p),0)
-            for d in dict:
-                ans += dict[d] * (dict[d]-1)
+                k = dis(q,p)
+                dict[k] = 1 + dict.get(k,0)
+            for v in dict.values():
+                ans += v*(v-1)
         return ans
-
 
     def numberOfBoomerangs2(self, points):
         # Approach #1, brute-force
