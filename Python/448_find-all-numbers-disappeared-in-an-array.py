@@ -21,6 +21,23 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
+        # Approach #2, since there are n elements in the list, use the minus/positive as False/True flag in each element
+        # kind of thining out of box
+        # when getting value, use abs()
+        # Time O(n), 6%
+        # Space O(1)
+        # traverse the list, for number i, mark nums[i] as negative
+        # traverse 1~n, if nums[i] is Positive, append it to the answer
+        ans = []
+        for i in nums:
+            i=abs(i)
+            nums[i-1] = abs(nums[i-1])* -1
+        for j in range(len(nums)):
+            if nums[j] > 0:
+                ans.append(j+1)
+        return ans
+        
+
         # Approach #1, brute-force naive
         # create a list with full integers
         # remove element from the list according to input nums
@@ -60,7 +77,7 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = Solution()
-    tc = [[4,3,2,7,8,2,3,1]]
+    tc = [[4,3,2,7,8,2,3,1],[]]
     an = [5,6]
     for i in range(len(tc)):
         print(s.findDisappearedNumbers(tc[i]))
