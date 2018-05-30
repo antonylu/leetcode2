@@ -24,14 +24,14 @@ class Solution(object):
         # Approach #2, since there are n elements in the list, use the minus/positive as False/True flag in each element
         # kind of thining out of box
         # when getting value, use abs()
-        # Time O(n), 6%
+        # Time O(n), 77%
         # Space O(1)
         # traverse the list, for number i, mark nums[i] as negative
         # traverse 1~n, if nums[i] is Positive, append it to the answer
         ans = []
         for i in nums:
-            i=abs(i)
-            nums[i-1] = abs(nums[i-1])* -1
+            i=abs(i)-1
+            nums[i] = abs(nums[i])* -1
         for j in range(len(nums)):
             if nums[j] > 0:
                 ans.append(j+1)
