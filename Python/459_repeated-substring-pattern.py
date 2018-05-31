@@ -50,10 +50,9 @@ class Solution(object):
         #
         # O(n) for str.find(), 92%
         #
+        # O(n) for str.find(), 96%
         ss = s+s
-        #ss = ss[1:len(ss)-1]
-        
-        return False if ss.find(s,1,len(ss)-1) == -1 else True
+        return ss.find(s,1,len(ss)-1) != -1
         
         
 
