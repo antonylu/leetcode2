@@ -24,6 +24,7 @@
 */
 #include <stdio.h>
 
+// Approach #1
 int hammingDistance(int x, int y) {
     int h = 0 ;
     int z = x ^ y;
@@ -37,10 +38,23 @@ int hammingDistance(int x, int y) {
     return h;
 }
 
+// Approach #2
+int hammingDistance2(int x, int y) {
+    int h = 0 ;
+    int z = x ^ y;
+    
+    while(z > 0)
+    {
+        h += z & 1;
+        z >>= 1;
+    }
+    return h;
+}
+
 void main(void)
 {
     int res = 0;
-    res = hammingDistance(2,4);
+    res = hammingDistance2(2,4);
     printf("%d\n", res);
 }
 
