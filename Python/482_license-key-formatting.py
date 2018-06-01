@@ -65,7 +65,7 @@ class Solution(object):
         #
         # Time  O(n)
         # Space O(n)
-        # Time Limit Exceeded
+        # 50ms, 83%
         S = S.replace('-','').upper()
         size = len(S)
         ans = []
