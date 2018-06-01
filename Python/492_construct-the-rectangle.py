@@ -37,15 +37,14 @@ class Solution(object):
         #  3. continue until w is found, l = area / w
         #  
         #  O(n), 90%
+        #  
+        #  Simplify checks, 
+        #  53%
         from math import sqrt
-        s = sqrt(area)
-        w = int(s)
-        if s == w: return [w,w]
-        while w > 0:
-            if area % w == 0: 
-                return [area//w, w]
+        w = int(sqrt(area))
+        while area % w:
             w -= 1
-        return [0,0]
+        return [area//w, w]
         
         
 
