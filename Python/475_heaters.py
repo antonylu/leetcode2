@@ -30,6 +30,25 @@ class Solution(object):
         :type heaters: List[int]
         :rtype: int
         """
+        # Approach #1b, binary search 
+        # optimise by
+        #  1. remove list 57%
+        #  2. remove min() 86%
+        #  3. remove corner case checks in loop
+        # Space O(1)
+        # Time  O(nlogn), 97.63%
+        heaters.sort()
+        heaters = [-2147483647] + heaters + [2147483648]
+        maximum = 0
+        from bisect import bisect
+        for h in houses:
+            i = bisect(heaters,h)
+            d1 = heaters[i]-h
+            d2 = h - heaters[i-1]
+            d = d1 if d1<d2 else d2
+            maximum = maximum if maximum > d else d
+        return maximum
+        
         # Approach #1a, binary search 
         # optimise by
         #  1. remove list 57%
@@ -75,8 +94,8 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = Solution()
-    tc = [([1,2,3],[2]), ([1,2,3,4],[1,4])]
-    an = [1,1]
+    tc = [([1,2,3],[2]), ([1,2,3,4],[1,4]),([282475249,622650073,984943658,144108930,470211272,101027544,457850878,458777923], [823564440,115438165,784484492,74243042,114807987,137522503,441282327,16531729,823378840,143542612])]
+    an = [1,1,161834419]
     for i in range(len(tc)):
-        print(s.findRadius(tc[i][0],tc[i][1]))
-        #assert(s.findRadius(tc) == an)
+        print (s.findRadius(tc[i][0],tc[i][1]))
+        assert(s.findRadius(tc[i][0],tc[i][1]) == an[i])
