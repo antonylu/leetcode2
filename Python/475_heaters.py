@@ -12,10 +12,12 @@ Numbers of houses and heaters you are given are non-negative and will not exceed
 Positions of houses and heaters you are given are non-negative and will not exceed 10^9.
 As long as a house is in the heaters' warm radius range, it can be warmed.
 All the heaters follow your radius standard and the warm radius will the same.
+
 Example 1:
 Input: [1,2,3],[2]
 Output: 1
 Explanation: The only heater was placed in the position 2, and if we use the radius 1 standard, then all the houses can be warmed.
+
 Example 2:
 Input: [1,2,3,4],[1,4]
 Output: 1
@@ -28,14 +30,36 @@ class Solution(object):
         :type heaters: List[int]
         :rtype: int
         """
+        # Approach #1a, binary search 
+        # optimise by
+        #  1. remove list 57%
+        #  2. remove min() 86%
+        # Space O(1)
+        # Time  O(nlogn), 
+        heaters.sort()
+        maximum = 0
+        from bisect import bisect
+        for h in houses:
+            i = bisect(heaters,h)
+            if i == 0: d = heaters[i]-h
+            elif i == len(heaters): d = h - heaters[len(heaters)-1]
+            else:
+                d1 = heaters[i]-h
+                d2 = h - heaters[i-1]
+                d = d1 if d1<d2 else d2
+            maximum = maximum if maximum > d else d
+        return maximum
+        
         # Approach #1, binary search 
         #
         # for every hose, find it's nearest heater
         # sort, then binary search 
         # find the max value of all min distance
         # 
-        # O(nlogn), 32%
-        houses.sort()
+        # Time  O(m logn), 32%
+        # Space O(m)
+        #
+        # houses.sort() # no need to sort houses, 36%
         heaters.sort()
         distances = []
         from bisect import bisect
