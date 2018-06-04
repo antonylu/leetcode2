@@ -32,6 +32,12 @@ class Solution(object):
         #     , if 1st upper and 2nd lower, must be lower
         #     , if 1st lower, must be lower
         #  
+
+        # Approach #1a, 
+        #    1. all upper casese 
+        #    2. word[1:] are all lower cases
+        #  66%
+        return word == word.upper() or word[1:] == word[1:].lower()
         
         # Approach #2, regex
         #
@@ -57,4 +63,4 @@ if __name__ == '__main__':
     an = [True, False, True, True, True]
     for i in range(len(tc)):
         print (s.detectCapitalUse(tc[i]))
-        #assert(s.detectCapitalUse(tc[i])== an[i])
+        assert(s.detectCapitalUse(tc[i])== an[i])
