@@ -28,16 +28,13 @@ class Solution(object):
         s = sorted(nums,reverse=True)
         size = len(s)
         d = {}
-        ans = []
 
         d[s[0]] = "Gold Medal"
         if size > 1: d[s[1]] = "Silver Medal"
         if size > 2: d[s[2]] = "Bronze Medal"
         for i, e in enumerate(s[3:]):
             d[e] = str(i+4)
-        for j in nums:
-            ans.append(d[j])
-        return ans
+        return [d[j] for j in nums]
             
 
 
