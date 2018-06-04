@@ -51,6 +51,28 @@ class Solution(object):
 
         return [k for k in self.dict.keys() if self.dict[k] == self.max ]
 
+        # Approach #1, brute-force, two phases
+        #  1. DFS all nocdes for all vals and count in dict
+        #  2. find dict keys with maximum counts
+        #  
+        # O(n), 18%
+        self.dict = {}
+        self.max  = 0
+        def dfs(node):
+            self.dict[node.val] = 1 + self.dict.get(node.val,0)
+            self.max = self.max if self.dict[node.val] < self.max else self.dict[node.val]
+            if node.left : dfs(node.left)
+            if node.right: dfs(node.right)
+        if root: dfs(root)
+
+        # return [k for k in self.dict.keys() if self.dict[k] == self.max ]
+        #
+        # additional list space without list comprehension
+        # 39%
+        ans = []
+        for k,v in self.dict.items():
+            if v == self.max: ans.append(k)
+        return ans
 
 
 if __name__ == '__main__':
