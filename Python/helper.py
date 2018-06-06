@@ -101,3 +101,51 @@ class LinkListHelper(object):
             ans.append(curr.val)
             curr = curr.next
         return ans
+
+class BSTHelper(object):
+    def listToBST(self, list):
+        """
+        :type list: List[int]
+        :rtype: TreeNode
+        """
+        # Approach 1: 
+        # Suppose the list is complete
+        # Brute force, BFS create nodes and link it
+        if len(list) == 0: return None
+        root = TreeNode(list.pop(0))
+        q = deque([root])
+        while(len(list) > 0):
+            current_node = q.popleft()
+            i = list.pop(0)
+            if i:
+                n = TreeNode(i)
+                current_node.left = n
+                q.append(n)
+            if(len(list)>0):
+                i = list.pop(0)
+                if i:
+                    n = TreeNode(i)
+                    current_node.right = n
+                    q.append(n)
+        return root
+
+    def BSTtoList(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List
+        """
+        # Approach 1: 
+        # Brute force, BFS and append to list
+        ans = []
+        if not root: return ans
+        q = deque([root])
+        while(len(q) > 0):
+            node = q.popleft()
+            if node:
+                ans.append(node.val)
+                q.append(node.left)
+                q.append(node.right)
+            else:
+                ans.append(None)
+
+        return ans
