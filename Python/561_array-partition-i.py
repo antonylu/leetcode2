@@ -23,11 +23,24 @@ class Solution(object):
         # Approach #1, brute-force
         #
         # sort, sum[2i], i.e., 0,2,4,..
+        #
         # O(n log n), 7%
+        # nums.sort()
+        #return sum([ nums[2*i] for i in range(len(nums)//2)])
+        
+        # O(n log n), 7%
+        # ans = 0
+        # nums.sort()
+        # for i in range(len(nums)//2):
+        #     ans += nums[i*2]
+        # return ans
+
+        # O(n log n), 100%
         nums.sort()
-        return sum([ nums[2*i] for i in range(len(nums)//2)])
+        return sum(nums[::2])
 
 
+        
 if __name__ == '__main__':
     s = Solution()
     tc  = [[1,4,3,2]]
