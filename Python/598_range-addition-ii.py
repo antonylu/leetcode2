@@ -45,6 +45,14 @@ class Solution(object):
         :type ops: List[List[int]]
         :rtype: int
         """
+        # Approach #2, get the minimum intersection
+        #
+        # O(n), 31%
+        for i in ops:
+            if i[0] < m: m = i[0]
+            if i[1] < n: n = i[1]
+        return m*n
+
         # Approach #1, get the minimum intersection
         #
         # O(n), 86%
