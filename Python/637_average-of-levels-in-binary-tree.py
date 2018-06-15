@@ -32,10 +32,10 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[float]
         """
-        # Approach #1, BFS
+        # Approach #1, BFS with level q length
         #
         # O(n), Python3, 99.8%
-        # O(n), Python2, 
+        # O(n), Python2, 88%
         
         from collections import deque
         if not root: return []
@@ -51,7 +51,7 @@ class Solution(object):
                     summ += node.val
                     if node.left:  q.append(node.left)
                     if node.right: q.append(node.right)
-            ans.append(summ/no_of_node)
+            ans.append(summ/float(no_of_node))
         return ans
                 
             
@@ -69,4 +69,4 @@ if __name__ == '__main__':
         t = th.listToBinaryTree(tc[i])
         r = s.averageOfLevels(t)
         print (r)
-        #assert(r == ans[i])
+        assert(r == ans[i])
