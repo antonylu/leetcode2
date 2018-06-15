@@ -24,12 +24,12 @@ class Solution(object):
         :rtype: float
         """
         # Approach #1, sliding window
-        # O(n), 96%
+        # O(n), 98%
         window = sum(nums[:k])
         ans = window
         for i in range(k,len(nums)):
             window = window + nums[i] - nums[i-k]
-            ans = ans if ans > window else window
+            if ans < window: ans = window
         return ans/float(k)
         
 
