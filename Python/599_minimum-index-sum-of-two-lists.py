@@ -37,6 +37,19 @@ class Solution(object):
         :type list2: List[str]
         :rtype: List[str]
         """
+        # Approach #1a, brute-force
+        # use list comprehension
+        # O(n), 33%
+        commonInterest = set(list1) & set(list2)
+        if len(commonInterest ) == 1: return list(commonInterest)
+
+        d = {}
+        for i in commonInterest:
+            d[i]=list1.index(i)+list2.index(i)
+        min_key = min(d, key=d.get)
+        return [k for k,v in d.items() if v == d[min_key] ]
+        
+
         # Approach #1, brute-force
         # use set & operand to get intersection
         # sum the index of element in the intersection set
