@@ -30,6 +30,41 @@ class Solution(object):
         :type M: List[List[int]]
         :rtype: List[List[int]]
         """
+        # Approach #1a, two level nested loop, 
+        # create a new matrix and return
+        # calculate the value based on condition
+        # note, to create a copy of list of objects, use deepcopy
+        #
+        #  (-1,-1),(0,-1),(1,-1)
+        #  (-1, 0),(0, 0),(1, 0)
+        #  (-1, 1),(0, 1),(1, 1)
+        # improve performance by operation reduction for "inside" positions
+        # O(n), 73%
+        from copy import deepcopy
+        A = deepcopy(M)
+        y_len = len(M)
+        x_len = len(M[0])
+        offset = [ (-1,-1),(0,-1),(1,-1), (-1, 0),(0, 0),(1, 0), (-1, 1),(0, 1),(1, 1) ]
+        for y in range(y_len):
+            for x in range(x_len):
+                sum = 0
+                if x > 0 and x < x_len -1 and y >0 and y< y_len -1:
+                    for o in offset:
+                        x1 = x + o[0] 
+                        y1 = y + o[1]
+                        sum += M[y1][x1]
+                    A[y][x] = sum//9
+                else:
+                    count = 0
+                    for o in offset:
+                        x1 = x + o[0] 
+                        y1 = y + o[1]
+                        if x1>=0 and x1 <x_len and y1>=0 and y1 < y_len:
+                            sum += M[y1][x1]
+                            count += 1
+                    A[y][x] = sum//count
+        return A
+
         # Approach #1, two level nested loop, 
         # create a new matrix and return
         # calculate the value based on condition
