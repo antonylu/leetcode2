@@ -40,6 +40,28 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
+        # Approach #2, DP + DFS
+        # DFS and remember in k-n.val in set s
+        # return true if any n.val in set s
+        # 
+        # add optimization with ans check
+        #
+        # O(n), 46%
+
+        self.set = set()
+        self.ans = False
+        def dfs(node):
+            if self.ans: return
+            if node.val in self.set:
+                self.ans = True
+            else:
+                self.set.add(k - node.val)
+            if node.left : dfs(node.left)
+            if node.right: dfs(node.right)
+
+        if root: dfs(root)
+        return self.ans
+
         # Approach #1, DP+DFS
         # DFS and remember in k-n.val in set s
         # return true if any n.val in set s
