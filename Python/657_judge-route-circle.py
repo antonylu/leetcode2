@@ -19,6 +19,14 @@ class Solution(object):
         :type moves: str
         :rtype: bool
         """
+
+        # Approach #2
+        # Count string
+        # L = R
+        # U = D
+        # O(n) 100%
+
+        return (moves.count('L') == moves.count('R')) and (moves.count('U')==moves.count('D'))
         # Approach #1
         # Count string
         # L = R
