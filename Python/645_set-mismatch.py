@@ -20,6 +20,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
+        # Approach #2, set operation
+        # Counter to find duplicate
+        # most_common for duplicate
+        # search 0 for missing
+        # O(n), 4.34%
+        from collections import Counter
+        c = Counter(nums)
+        dup = c.most_common(1)[0][0]
+        
+        for i in range(1,len(nums)+1):
+            if c[i] == 0: 
+                missing = i
+                break
+        return [dup, missing]
+
         # Approach #1, set operation
         # create a correct set
         # subset to get the missing number
