@@ -24,7 +24,26 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Approach #2, naive
+        #
+        # compare 1 by 1
+        # O(n), 12%
+        #
+        ans = 0
+        count = 0
+        if len(nums) == 0:
+            return 0
+        else:
+            current = nums[0]
 
+        for i in nums:
+            if i > current:
+                count +=1
+            else:
+                if count > ans: ans = count
+                count = 1
+            current = i
+        return count if count > ans else ans
 
         # Approach #1, naive
         #
