@@ -9,7 +9,7 @@ Given such a binary tree, you need to output the second minimum value in the set
 If no such second minimum value exists, output -1 instead.
 
 Example 1:
-Input: 
+Input:
     2
    / \
   2   5
@@ -19,7 +19,7 @@ Input:
 Output: 5
 Explanation: The smallest value is 2, the second smallest value is 5.
 Example 2:
-Input: 
+Input:
     2
    / \
   2   2
@@ -41,8 +41,25 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # Approach #3, DFS
+        # O(n),30%
+        self.minimum_1st = root.val
+        self.minimum_2nd = 2147483648
+
+        def dfs(node):
+            if node.val >self.minimum_1st and node.val <  self.minimum_2nd:
+                self.minimum_2nd = node.val
+            if node.left : dfs(node.left)
+            if node.right: dfs(node.right)
+
+        dfs(root)
+
+        if self.minimum_2nd != 2147483648: return self.minimum_2nd
+        return -1
+
+
         # Approach #1, traverse, set, sort, 2nd smallest
-        
+
         # Approach #2, BFS
         # the root is the smallest
         # BFS and find a larger one > root.val
@@ -64,7 +81,7 @@ class Solution(object):
             if node.right: q.append(node.right)
         if minimum_2nd != 2147483648: return minimum_2nd
         return -1
-        
+
 
 
 
