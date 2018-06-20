@@ -48,6 +48,8 @@ class Solution(object):
         # BFS and find a larger one > root.val
         # if not found, -1
         # O(n), 6%
+        # improve by removing level check
+        # O(n), 97%
         if not root: return -1
 
         from collections import deque
@@ -55,13 +57,11 @@ class Solution(object):
         minimum_1st = root.val
         minimum_2nd = 2147483648
         while len(q) > 0:
-            level_number = len(q)
-            for i in range(level_number):
-                node = q.popleft()
-                if node.val >minimum_1st and node.val <  minimum_2nd:
-                    minimum_2nd = node.val
-                if node.left : q.append(node.left)
-                if node.right: q.append(node.right)
+            node = q.popleft()
+            if node.val >minimum_1st and node.val <  minimum_2nd:
+                minimum_2nd = node.val
+            if node.left : q.append(node.left)
+            if node.right: q.append(node.right)
         if minimum_2nd != 2147483648: return minimum_2nd
         return -1
         
