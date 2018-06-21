@@ -44,6 +44,37 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # Approach #2, improved DFS
+        # 1 loop check 
+        # reuse solution of 543 diameter of a binary tree
+        #
+        # post-order DFS, get left and right longest univalue path (LUP)
+        #
+        # if node.val == node.left.val, reuse left+1
+        # otherwise, left = 0
+        #
+        # O(n), 58%
+        self.ans = 0
+        def dfs(node):
+            if not node: return 0
+            left  = dfs(node.left)
+            right = dfs(node.right)
+            if node.left and node.left.val == node.val:
+                left = left +1
+            else:
+                left = 0
+            if node.right and node.right.val == node.val:
+                right = right +1
+            else:
+                right = 0
+            
+            self.ans = max(self.ans, left+right)
+            return max(left,right)
+        
+        if root: dfs(root)
+        return self.ans
+        
+
         # Approach #1, brute-force
         # treat the question as find the LUP through a specific node
         # then apply to every node by traversal
