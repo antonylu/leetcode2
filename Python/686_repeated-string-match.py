@@ -17,6 +17,22 @@ class Solution(object):
         :type B: str
         :rtype: int
         """
+        # Approach #2, ceil(len(B)/len(A)) or +1 is the possible answer
+        # the ceil can be written as -(-len(B)//len(A))
+        #
+        # O(n), 100% 33ms, this is the 4th time get 100%
+        #
+        if len(set(B) - set(A)) >0: return -1
+
+        repeat = -(-len(B)//len(A))
+        AA = A*repeat
+        if B in AA: return repeat
+        AA = "".join([AA,A])
+        if B in AA: return repeat+1
+
+        return -1
+
+
         # Approach #1, naive
         # 1. repeat A until len(A+) <= len(B)
         # 2. compare and repeat A until len(A+) > 4* len(B)
