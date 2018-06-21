@@ -21,6 +21,20 @@ class Solution(object):
         # 1. repeat A until len(A+) <= len(B)
         # 2. compare and repeat A until len(A+) > 4* len(B)
 
+        # Approach #1a, brute force
+        # repeat A and compare and repeat A until len(A+) > 3 x len(B)
+        # use set to exclude obvious invalid test case
+        # O(n), 95%
+        if len(set(B) - set(A)) >0: return -1
+
+        AA = A
+        repeat = 1
+        while repeat == 1 or len(AA) < 3* len(B):
+            if B in AA: return repeat
+            AA = "".join([AA,A])
+            repeat +=1
+        return -1
+
         # Approach #1, brute force
         # repeat A and compare and repeat A until len(A+) > 3 x len(B)
         #
