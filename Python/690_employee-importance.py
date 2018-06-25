@@ -38,7 +38,28 @@ class Solution(object):
         :type id: int
         :rtype: int
         """
-        # Approach #2, BFS
+        # Approach #2a, DFS with stack
+        # 1. create a hash dict of ID vs (Importance,[sub]) with Dict comprehension
+        #    to speed up the ID lookup O(n)
+        # 2. BFS and sum up
+        #
+        # O(n), 39%
+        d = {}
+        for e in employees:
+            d[e.id] = (e.importance, e.subordinates)
+
+        self.ans = 0
+        stack = []
+        stack.append(d[id])
+        while len(stack) > 0:
+            employee = stack.pop()
+            self.ans += employee[0]
+            for subID in employee[1]:
+                stack.append(d[subID])
+
+        return self.ans
+
+        # Approach #2, BFS with queue
         # 1. create a hash dict of ID vs (Importance,[sub]) with Dict comprehension
         #    to speed up the ID lookup O(n)
         # 2. BFS and sum up
@@ -55,7 +76,7 @@ class Solution(object):
                 q.append(d[subID])
 
         return self.ans
-        # Approach #1a, DFS
+        # Approach #1a, DFS with recursion
         # 1. create a hash dict of ID vs (Importance,[sub]) with Dict comprehension
         #    to speed up the ID lookup O(n)
         # 2. DFS and sum up
@@ -74,7 +95,7 @@ class Solution(object):
         dfs(id)
         return self.ans
 
-        # Approach #1, DFS
+        # Approach #1, DFS with recursion
         # 1. create a hash dict of ID vs (Importance,[sub])
         #    to speed up the ID lookup O(n)
         # 2. DFS and sum up
