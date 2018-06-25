@@ -46,15 +46,15 @@ class Solution(object):
         # it's not clear what employees is, after test, it is a list of Employee objects
         #
         # O(n), 58%
-        
+
         d = {}
         for e in employees:
-            d[e.id] = (e.importance, e.subordinates)
+            d[e.id] = e
 
         self.ans = 0
         def dfs(id):
-            self.ans += d[id][0]
-            for e in d[id][1]:
+            self.ans += d[id].importance
+            for e in d[id].subordinates:
                 dfs(e)
 
         dfs(id)
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     tc  = [ ([[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1),([[1,2,[2]], [2,3,[]]],2)]
     ans = [ 11,3 ]
 
-   
+
     for i in range(len(tc)):
         employees = []
         for j in tc[i][0]:
