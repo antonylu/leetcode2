@@ -31,6 +31,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        
+        # Approach #2a, groups and find minimum
+        # two liners with map(), str.replace(), str.split() and zip()
+        #
+        # O(n), 88%
+        #
+        s = list(map(len, s.replace('01', '0 1').replace('10', '1 0').split()))
+        return sum(min(a, b) for a, b in zip(s, s[1:]))
+
         # Approach #2, groups and find minimum
         #
         # breaks 1s and 0s to groups, e.g., "00110011" => "00", "11", "00", "11" => [2,2,2,2]
