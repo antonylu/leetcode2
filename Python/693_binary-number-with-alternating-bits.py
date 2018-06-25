@@ -37,6 +37,20 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
+        # Approach #2, bit-wise operation
+        # >> 1 to simulate /2
+        # && 1 to get last bit
+        # compare bit by bit
+        # O(n), 72%
+        c1 = n & 1
+        n = n >> 1
+        while n >=1:
+            c = n & 1
+            if c == c1: return False
+            c1 = c
+            n = n >> 1
+        return True
+
         # Approach #1, naive 
         #
         # convert to bin presentation, bin(n)
@@ -48,8 +62,6 @@ class Solution(object):
             if c == c1: return False
             c1 = c
         return True
-        
-
 
 
 if __name__ == '__main__':
