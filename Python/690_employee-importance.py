@@ -38,6 +38,25 @@ class Solution(object):
         :type id: int
         :rtype: int
         """
+        # Approach #1a,
+        # 1. create a hash dict of ID vs (Importance,[sub]) with Dict comprehension
+        #    to speed up the ID lookup O(n)
+        # 2. DFS and sum up
+        #
+        # it's not clear what employees is, after test, it is a list of Employee objects
+        #
+        # O(n), 42%
+        
+        d = {e.id: (e.importance, e.subordinates) for e in employees}
+        self.ans = 0
+        def dfs(id):
+            self.ans += d[id][0]
+            for e in d[id][1]:
+                dfs(e)
+
+        dfs(id)
+        return self.ans
+
         # Approach #1,
         # 1. create a hash dict of ID vs (Importance,[sub])
         #    to speed up the ID lookup O(n)
@@ -46,15 +65,15 @@ class Solution(object):
         # it's not clear what employees is, after test, it is a list of Employee objects
         #
         # O(n), 58%
-
+        
         d = {}
         for e in employees:
-            d[e.id] = e
+            d[e.id] = (e.importance, e.subordinates)
 
         self.ans = 0
         def dfs(id):
-            self.ans += d[id].importance
-            for e in d[id].subordinates:
+            self.ans += d[id][0]
+            for e in d[id][1]:
                 dfs(e)
 
         dfs(id)
@@ -67,7 +86,7 @@ if __name__ == '__main__':
     tc  = [ ([[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1),([[1,2,[2]], [2,3,[]]],2)]
     ans = [ 11,3 ]
 
-
+   
     for i in range(len(tc)):
         employees = []
         for j in tc[i][0]:
