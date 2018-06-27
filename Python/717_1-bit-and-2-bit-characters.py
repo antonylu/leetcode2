@@ -36,9 +36,11 @@ class Solution(object):
         # if 0: 1
         # is the last char one or two bits?
         #
-        # O(n), 35%
-        i = 0
+        # O(n), 39%
         length = len(bits)
+        if length == 1 : return True        
+        if bits[-1] ==0 and bits[-2] == 0: return True        
+        i = 0
         while i < length:
             if bits[i] == 1:
                 digit = 2
