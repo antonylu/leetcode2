@@ -30,6 +30,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Approach #2, defaultdict and min
+        #
+        # use list defaultdict to convert to index occurrence list, 
+        # use min(tuple) to find  minimum answer with maximum length(degree)
+        #
+        # O(n), 35%
+        from collections import defaultdict
+        dd = defaultdict(list)
+        for i,e in enumerate(nums):
+            dd[e].append(i)
+        return min((-len(idx), idx[-1]-idx[0]+1 ) for idx in dd.values() )[1]
+
         # Approach #1, count and subtract
         #
         # find degree with count.most()
