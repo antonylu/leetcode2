@@ -30,6 +30,14 @@ class Solution(object):
         # check every number between left and right
         # O(n), 80%
         def isSelfDriving(n):
+            # refactor
+            d = n
+            while d > 0:
+                d,m = divmod(d,10)
+                if m == 0 or n % m != 0: return False
+            return True
+
+            """
             d,m = divmod(n,10)
             while d > 0:
                 #print(n,d,m)
@@ -37,7 +45,8 @@ class Solution(object):
                 d,m = divmod(d,10)
             if m == 0 or n % m != 0: return False
             return True
-
+            """
+            
 
         ans = []
         for i in range(left, right+1):
@@ -55,4 +64,4 @@ if __name__ == '__main__':
     for i in range(len(tc)):
         r = s.selfDividingNumbers(tc[i][0],tc[i][1])
         print (r)
-        #assert(r == ans[i])
+        assert(r == ans[i])
