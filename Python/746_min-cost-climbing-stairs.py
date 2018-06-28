@@ -26,6 +26,13 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
+        # Approach #2, naive
+        # O(n), 24%
+        min_cost0, min_cost1 = cost[0], cost[1]
+        for c in cost[2:]:
+            min_cost0, min_cost1 = min_cost1, min(min_cost0, min_cost1) + c
+        return min(min_cost0, min_cost1)
+        
         # Approach #1a, recursion with memorization, DP
         #
         # Say f[i] is the final cost to climb to the top from step i.
