@@ -25,12 +25,27 @@ class Solution(object):
         :type right: int
         :rtype: List[int]
         """
+        # Approach #1a, brute-force
+        # with str()
+        #
+        # check every number between left and right
+        # O(n), 68%
+        def isSelfDriving(n):
+            for d in str(n):
+                if d == '0' or n%int(d) !=0 : return False
+            return True
+        ans = []
+        for i in range(left, right+1):
+            if isSelfDriving(i): ans.append(i)
+        return ans
+
         # Approach #1, brute-force
+        # with divmod()
         #
         # check every number between left and right
         # O(n), 80%
         def isSelfDriving(n):
-            # refactor
+            # refactoring
             d = n
             while d > 0:
                 d,m = divmod(d,10)
@@ -46,7 +61,7 @@ class Solution(object):
             if m == 0 or n % m != 0: return False
             return True
             """
-            
+
 
         ans = []
         for i in range(left, right+1):
