@@ -26,6 +26,29 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
+        # Approach #1a, recursion with memorization, DP
+        #
+        # Say f[i] is the final cost to climb to the top from step i.
+        #     f[i] = cost[i] + min(f[i+1], f[i+2])
+        # f(n)  = cost[n]                         , if n >= len(cost) -2
+        #       = cost[n] + min(f[n+1], f[n+2])   , if n
+        #
+        # O(n^2) if no memorization
+        # O(n)   with hashmap lookup, 13%
+        last2 = len(cost) - 2
+        d = {}
+        def finalCost(n):
+            if n in d:
+                return d[n]
+            elif n >= last2 :
+                return cost[n]
+            else:
+                v = cost[n] + min(finalCost(n+1), finalCost(n+2) )
+                d[n] = v
+                return v
+
+        return min(finalCost(0), finalCost(1))
+
         # Approach #1, recursion with memorization, DP
         #
         # Say f[i] is the final cost to climb to the top from step i.
