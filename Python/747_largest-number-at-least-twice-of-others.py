@@ -55,7 +55,21 @@ class Solution(object):
 
 
 
-
+        # Approach #3, linear search with max
+        # get 1st and 2nd largest element with max()
+        #
+        # return 1st >=2nd*2
+        #
+        # O(n), 46%
+        if len(nums) == 1 : return 0
+        max1 = max(nums)
+        max1_idx = nums.index(max1)
+        nums.remove(max1)
+        max2 = max(nums)
+        if max1 >= max2 *2:
+            return max1_idx
+        else:
+            return -1
 
 
 
@@ -64,7 +78,7 @@ class Solution(object):
 if __name__ == '__main__':
     s = Solution()
     tc =  [ [3, 6, 1, 0], [1, 2, 3, 4],[1]]
-    ans = [  1, -1 ]
+    ans = [  1, -1, 0 ]
 
     for i in range(len(tc)):
         r = s.dominantIndex(tc[i])
