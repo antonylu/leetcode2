@@ -41,6 +41,7 @@ letters consists of lowercase letters, and contains at least 2 unique letters.
 target is a lowercase letter.
 
 """
+import bisect
 class Solution(object):
     def nextGreatestLetter(self, letters, target):
         """
@@ -48,6 +49,13 @@ class Solution(object):
         :type target: str
         :rtype: str
         """
+        # Approach #1a, binary search
+        #
+        # O(log n), 100%
+        #
+        i = bisect.bisect_right(letters,target)
+        return letters[i%len(letters)]
+
         # Approach #1, binary search
         #
         # O(log n), 79%
