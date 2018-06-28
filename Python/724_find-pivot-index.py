@@ -31,6 +31,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Approach #1a, sliding window, rephrase
+        # O(n), 7%
+        #
+        total = sum(nums)
+        left  = 0
+        for i,e in enumerate(nums):
+            if left == (total - left - e): return i
+            left += e
+        return -1
+
         # Approach #1, sliding window
         #
         # [1,7,3,6,5,6]
@@ -59,7 +69,7 @@ class Solution(object):
 if __name__ == '__main__':
     s = Solution()
     tc =  [ [1, 2, 3], [-1,-1,0,1,1,0],[-1,-1,0,1,0,-1],[-1,-1,-1,0,1,1], [1, 7, 3, 6, 5, 6] , [], [1], [1,2] ]
-    ans = [-1, 5, 4, 0, 3, -1, -1, -1 ]
+    ans = [-1, 5, 4, 0, 3, -1, 0, -1 ]
 
     for i in range(len(tc)):
         r = s.pivotIndex(tc[i])
