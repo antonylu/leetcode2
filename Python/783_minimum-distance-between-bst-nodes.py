@@ -39,8 +39,40 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # Approach #1a, pre-order DFS
+        # enumerate left-subtree's right-most-leaf - node, node - right-subtree's left-most-leaf
+        # with min every check, save O(n) space
+        #
+        # O(n), 82%
+        #
+        def rightMostLeaf(node):
+            if node.right:
+                return rightMostLeaf(node.right)
+            else:
+                return node.val
+        def leftMostLeaf(node):
+            if node.left:
+                return leftMostLeaf(node.left)
+            else:
+                return node.val
+        def dfs(node):
+            if node.left :
+                self.ans = min(self.ans,node.val-rightMostLeaf(node.left))
+                dfs(node.left)
+            if node.right:
+                self.ans = min(self.ans,leftMostLeaf(node.right)-node.val)
+                dfs(node.right)
+
+        if root:
+            self.ans = float('inf')
+            dfs(root)
+
+        return self.ans
+
         # Approach #1, pre-order DFS
         # enumerate left-subtree's right-most-leaf - node, node - right-subtree's left-most-leaf
+        # with list and min before return
+        #
         # O(n), 35%
         candidate = []
         def rightMostLeaf(node):
