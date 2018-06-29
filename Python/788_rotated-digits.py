@@ -27,6 +27,27 @@ class Solution(object):
         :type N: int
         :rtype: int
         """
+        # Approach #1a, brute-force
+        #
+        # All digits in set([0,1,8,2,5,6,9])
+        # at least one in set([2,5,6,9])
+        #
+        # O(n), 76%
+        #s1  = set('0182569')
+        s1p = set('347')
+        s2  = set('2569')
+        count = 0
+        for j in xrange(N+1):
+            good = False
+            for c in str(j):
+                if c in s1p:
+                    good = False
+                    break
+                if c in s2 : good = True
+            if good : count += 1
+
+        return count
+
         # Approach #2, set operation
         #
         # All digits in set([0,1,8,2,5,6,9])
