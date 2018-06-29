@@ -32,15 +32,14 @@ class Solution(object):
         # All digits in set([0,1,8,2,5,6,9])
         # at least one in set([2,5,6,9])
         #
-        # O(n), 33%
-        s1 = {0,1,8,2,5,6,9}
-        s2 = {2,5,6,9}
+        # O(n), 74%
+        s1 = set('0182569')
+        s2 = set('2569')
         def isGood(n):
             good = False
             for c in str(n):
-                i = int(c)
-                if i not in s1: return False
-                if i in s2: good = True
+                if c not in s1: return False
+                if c in s2: good = True
             return good
         count = 0
         for j in xrange(N+1):
