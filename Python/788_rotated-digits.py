@@ -27,6 +27,25 @@ class Solution(object):
         :type N: int
         :rtype: int
         """
+        # Approach #2, set operation
+        #
+        # All digits in set([0,1,8,2,5,6,9])
+        # at least one in set([2,5,6,9])
+        #
+        # O(n), 45%
+        s1 = set('0182569')
+        s2 = set('2569')
+        def isGood(n):
+            n = set(str(n))
+            if len(n & s2) == 0: return False
+            if not n <= s1: return False
+            return True
+        count = 0
+        for j in xrange(N+1):
+            if isGood(j): count += 1
+
+        return count
+
         # Approach #1, brute-force
         #
         # All digits in set([0,1,8,2,5,6,9])
