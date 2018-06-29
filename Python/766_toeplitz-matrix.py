@@ -42,12 +42,31 @@ What if the matrix is stored on disk, and the memory is limited such that you ca
 What if the matrix is so large that you can only load up a partial row into the memory at once?
 
 """
+xrange = range
 class Solution(object):
     def isToeplitzMatrix(self, matrix):
         """
         :type matrix: List[List[int]]
         :rtype: bool
         """
+        # Approach #2, brute-force
+        #
+        # compare len(matrix) - 1 times
+        #   compare matrix[0][:len-1] with matrix[1][1:]
+        #   compare char by char
+        #  example:
+        #   [1,2,3,4],      \
+        #   [5,1,2,3],      \
+        #   [9,5,1,2]       \
+        # compare [1,2,3]
+        # compare [5,1,2]
+        #
+        # O(n), 10%
+        for i in xrange(len(matrix)-1):
+            for j in xrange(len(matrix[0])-1):
+                if matrix[i][j] != matrix[i+1][j+1]: return False
+        return True
+
         # Approach #1, brute-force
         #
         # compare len(matrix) - 1 times
@@ -59,8 +78,8 @@ class Solution(object):
         # compare [1,2,3]
         # compare [5,1,2]
         #
-        # O(n), 13%
-        for i in range(len(matrix)-1):
+        # O(n), 19%
+        for i in xrange(len(matrix)-1):
             if matrix[i][:-1] != matrix[i+1][1:]: return False
         return True
 
