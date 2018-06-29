@@ -25,6 +25,31 @@ class Solution(object):
         :type S: str
         :rtype: List[str]
         """
+        # Approach #2, itertools.product
+        #
+        # TODO:
+        # fit the purpose of itertools.product
+        #  . generate the input for itertools.product()
+        #  . create the answer
+        #
+        # example
+        #  "a1b2", the input should be ['a','A'],'1',['b','B'],'2'
+        #
+        # O(n), 51%
+        s = []
+        for c in S:
+            if c.isalpha():
+                s.append([c.lower(), c.upper()])
+            else:
+                s.append(c)
+        
+        ans = []
+        import itertools
+        for i in list(itertools.product(*s)):
+            ans.append("".join(i))
+        return ans
+
+        exit()
         # Approach #1, binary digits, brute-force
         #
         # for n letters in S, there are 2^n elements
@@ -60,4 +85,4 @@ if __name__ == '__main__':
     for i in range(len(tc)):
         r = s.letterCasePermutation(tc[i])
         print (r)
-        #assert(r == ans[i])
+        assert(r == ans[i])
