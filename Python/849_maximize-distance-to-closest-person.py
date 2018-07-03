@@ -37,6 +37,36 @@ class Solution(object):
         :type seats: List[int]
         :rtype: int
         """
+        # Approach #1a, naive with index
+        #
+        # 3 conditions
+        #  1. in the middle longest consecutive 0s
+        #       1:1
+        #       2:1
+        #       3:2
+        #       4:2
+        #       5:3
+        #       6:3
+        #       n:(n+1)//2
+        #  2. the first if it is 0
+        #  3. the last, if it is 0
+        #
+        # O(n), 84ms
+        #
+        first0 = seats.index(1)
+        last0  = seats[::-1].index(1)
+
+        middle0 = 0
+        count = 0
+        for s in seats:
+            if s == 0:
+                count+=1
+            else:
+                middle0 = max(middle0, count)
+                count = 0
+
+        return max(first0, last0, (middle0+1)//2)
+
         # Approach #1, naive
         #
         # 3 conditions
