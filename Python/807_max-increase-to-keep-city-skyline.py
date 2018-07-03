@@ -40,6 +40,26 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
+        # Approach #1a, naive with list comprehension and zip(*grid)
+        #
+        # find the skylines, I, J, newGrid[i,j] = min(I,J)
+        #    9 4 8 7
+        #  +--------
+        # 8| 8 4 8 7
+        # 7| 7 4 7 7
+        # 9| 9 4 8 7
+        # 3| 3 3 3 3
+        #
+        # O(n), 48%
+        #
+        I = [max(i) for i in grid]
+        J = [max(j) for j in zip(*grid)]
+        ans = 0
+        for i in xrange(len(grid)):
+            for j in xrange(len(grid[0])):
+                ans += min(I[i],J[j]) - grid[i][j]
+        return ans
+
         # Approach #1, naive
         #
         # find the skylines, I, J, newGrid[i,j] = min(I,J)
@@ -55,7 +75,7 @@ class Solution(object):
         I, J = [], []
         for i in grid:
             I.append(max(i))
-        for j in xrange(len(grid[0])):
+         for j in xrange(len(grid[0])):
             J.append(max([grid[i][j] for i in xrange(len(grid)) ]))
         #print(I,J)
         ans = 0
