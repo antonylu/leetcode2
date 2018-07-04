@@ -21,6 +21,13 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        # Approach #3, Manacher's Algorithm
+        #
+        # TODO
+        # refer to: http://articles.leetcode.com/longest-palindromic-substring-part-ii/
+        #
+        # O(n)
+
         # Approach #1, brute-force
         #
         # define a isPalindrome()
